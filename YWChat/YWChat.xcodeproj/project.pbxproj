@@ -1,0 +1,658 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA9B9FDD2045066900133A54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9FDC2045066900133A54 /* AppDelegate.swift */; };
+		AA9B9FDF2045066900133A54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9FDE2045066900133A54 /* ViewController.swift */; };
+		AA9B9FE22045066900133A54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA9B9FE02045066900133A54 /* Main.storyboard */; };
+		AA9B9FE42045066900133A54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA9B9FE32045066900133A54 /* Assets.xcassets */; };
+		AA9B9FE72045066900133A54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA9B9FE52045066900133A54 /* LaunchScreen.storyboard */; };
+		AA9B9FF22045066900133A54 /* YWChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9FF12045066900133A54 /* YWChatTests.swift */; };
+		AA9B9FFD2045066900133A54 /* YWChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9FFC2045066900133A54 /* YWChatUITests.swift */; };
+		BC25177231DB71E1B0BF64D6 /* libPods-YWChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC6950EC0C666D48F3C548E /* libPods-YWChat.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA9B9FEE2045066900133A54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA9B9FD12045066900133A54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA9B9FD82045066900133A54;
+			remoteInfo = YWChat;
+		};
+		AA9B9FF92045066900133A54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA9B9FD12045066900133A54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA9B9FD82045066900133A54;
+			remoteInfo = YWChat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		52F7EF0BD7361A796EB00AEC /* Pods-YWChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YWChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YWChat/Pods-YWChat.debug.xcconfig"; sourceTree = "<group>"; };
+		AA9B9FD92045066900133A54 /* YWChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YWChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA9B9FDC2045066900133A54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AA9B9FDE2045066900133A54 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AA9B9FE12045066900133A54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AA9B9FE32045066900133A54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA9B9FE62045066900133A54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AA9B9FE82045066900133A54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA9B9FED2045066900133A54 /* YWChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YWChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA9B9FF12045066900133A54 /* YWChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWChatTests.swift; sourceTree = "<group>"; };
+		AA9B9FF32045066900133A54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA9B9FF82045066900133A54 /* YWChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YWChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA9B9FFC2045066900133A54 /* YWChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWChatUITests.swift; sourceTree = "<group>"; };
+		AA9B9FFE2045066900133A54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8E97130203E404EA9521966 /* Pods-YWChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YWChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-YWChat/Pods-YWChat.release.xcconfig"; sourceTree = "<group>"; };
+		DDC6950EC0C666D48F3C548E /* libPods-YWChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YWChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA9B9FD62045066900133A54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC25177231DB71E1B0BF64D6 /* libPods-YWChat.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA9B9FEA2045066900133A54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA9B9FF52045066900133A54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1CA5E86616AE26AE8A03F8F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDC6950EC0C666D48F3C548E /* libPods-YWChat.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA9B9FD02045066900133A54 = {
+			isa = PBXGroup;
+			children = (
+				AA9B9FDB2045066900133A54 /* YWChat */,
+				AA9B9FF02045066900133A54 /* YWChatTests */,
+				AA9B9FFB2045066900133A54 /* YWChatUITests */,
+				AA9B9FDA2045066900133A54 /* Products */,
+				F2D0DDF9DA1FDB9B797B8686 /* Pods */,
+				1CA5E86616AE26AE8A03F8F8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AA9B9FDA2045066900133A54 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B9FD92045066900133A54 /* YWChat.app */,
+				AA9B9FED2045066900133A54 /* YWChatTests.xctest */,
+				AA9B9FF82045066900133A54 /* YWChatUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA9B9FDB2045066900133A54 /* YWChat */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B9FDC2045066900133A54 /* AppDelegate.swift */,
+				AA9B9FDE2045066900133A54 /* ViewController.swift */,
+				AA9B9FE02045066900133A54 /* Main.storyboard */,
+				AA9B9FE32045066900133A54 /* Assets.xcassets */,
+				AA9B9FE52045066900133A54 /* LaunchScreen.storyboard */,
+				AA9B9FE82045066900133A54 /* Info.plist */,
+			);
+			path = YWChat;
+			sourceTree = "<group>";
+		};
+		AA9B9FF02045066900133A54 /* YWChatTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B9FF12045066900133A54 /* YWChatTests.swift */,
+				AA9B9FF32045066900133A54 /* Info.plist */,
+			);
+			path = YWChatTests;
+			sourceTree = "<group>";
+		};
+		AA9B9FFB2045066900133A54 /* YWChatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B9FFC2045066900133A54 /* YWChatUITests.swift */,
+				AA9B9FFE2045066900133A54 /* Info.plist */,
+			);
+			path = YWChatUITests;
+			sourceTree = "<group>";
+		};
+		F2D0DDF9DA1FDB9B797B8686 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				52F7EF0BD7361A796EB00AEC /* Pods-YWChat.debug.xcconfig */,
+				D8E97130203E404EA9521966 /* Pods-YWChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA9B9FD82045066900133A54 /* YWChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA9BA0012045066900133A54 /* Build configuration list for PBXNativeTarget "YWChat" */;
+			buildPhases = (
+				F3E9157FC0D21D2EA5B12BD9 /* [CP] Check Pods Manifest.lock */,
+				AA9B9FD52045066900133A54 /* Sources */,
+				AA9B9FD62045066900133A54 /* Frameworks */,
+				AA9B9FD72045066900133A54 /* Resources */,
+				DD2305E9FE4839478421D506 /* [CP] Embed Pods Frameworks */,
+				2F9A6D9057D12D38ADAEF6FA /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YWChat;
+			productName = YWChat;
+			productReference = AA9B9FD92045066900133A54 /* YWChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA9B9FEC2045066900133A54 /* YWChatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA9BA0042045066900133A54 /* Build configuration list for PBXNativeTarget "YWChatTests" */;
+			buildPhases = (
+				AA9B9FE92045066900133A54 /* Sources */,
+				AA9B9FEA2045066900133A54 /* Frameworks */,
+				AA9B9FEB2045066900133A54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA9B9FEF2045066900133A54 /* PBXTargetDependency */,
+			);
+			name = YWChatTests;
+			productName = YWChatTests;
+			productReference = AA9B9FED2045066900133A54 /* YWChatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AA9B9FF72045066900133A54 /* YWChatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA9BA0072045066900133A54 /* Build configuration list for PBXNativeTarget "YWChatUITests" */;
+			buildPhases = (
+				AA9B9FF42045066900133A54 /* Sources */,
+				AA9B9FF52045066900133A54 /* Frameworks */,
+				AA9B9FF62045066900133A54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA9B9FFA2045066900133A54 /* PBXTargetDependency */,
+			);
+			name = YWChatUITests;
+			productName = YWChatUITests;
+			productReference = AA9B9FF82045066900133A54 /* YWChatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA9B9FD12045066900133A54 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Jake;
+				TargetAttributes = {
+					AA9B9FD82045066900133A54 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					AA9B9FEC2045066900133A54 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AA9B9FD82045066900133A54;
+					};
+					AA9B9FF72045066900133A54 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AA9B9FD82045066900133A54;
+					};
+				};
+			};
+			buildConfigurationList = AA9B9FD42045066900133A54 /* Build configuration list for PBXProject "YWChat" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA9B9FD02045066900133A54;
+			productRefGroup = AA9B9FDA2045066900133A54 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA9B9FD82045066900133A54 /* YWChat */,
+				AA9B9FEC2045066900133A54 /* YWChatTests */,
+				AA9B9FF72045066900133A54 /* YWChatUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA9B9FD72045066900133A54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA9B9FE72045066900133A54 /* LaunchScreen.storyboard in Resources */,
+				AA9B9FE42045066900133A54 /* Assets.xcassets in Resources */,
+				AA9B9FE22045066900133A54 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA9B9FEB2045066900133A54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA9B9FF62045066900133A54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F9A6D9057D12D38ADAEF6FA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YWChat/Pods-YWChat-resources.sh",
+				"${PODS_ROOT}/YunWangOpenIM/wx/WXFrameworks/yw_1222.jpg",
+				"${PODS_ROOT}/YunWangOpenIM/wx/WXFrameworks/WXOpenIMContactKitResource.bundle",
+				"${PODS_ROOT}/YunWangOpenIM/wx/WXFrameworks/WXOpenIMPhotoKitResource.bundle",
+				"${PODS_ROOT}/YunWangOpenIM/wx/WXFrameworks/WXOpenIMSDKResource.bundle",
+				"${PODS_ROOT}/YunWangOpenIM/wx/WXFrameworks/WXOpenIMTribeKitResource.bundle",
+				"${PODS_ROOT}/YunWangOpenIM/wx/WXFrameworks/WXOUIModuleResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/yw_1222.jpg",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WXOpenIMContactKitResource.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WXOpenIMPhotoKitResource.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WXOpenIMSDKResource.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WXOpenIMTribeKitResource.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WXOUIModuleResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YWChat/Pods-YWChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD2305E9FE4839478421D506 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YWChat/Pods-YWChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3E9157FC0D21D2EA5B12BD9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YWChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA9B9FD52045066900133A54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA9B9FDF2045066900133A54 /* ViewController.swift in Sources */,
+				AA9B9FDD2045066900133A54 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA9B9FE92045066900133A54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA9B9FF22045066900133A54 /* YWChatTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA9B9FF42045066900133A54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA9B9FFD2045066900133A54 /* YWChatUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA9B9FEF2045066900133A54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA9B9FD82045066900133A54 /* YWChat */;
+			targetProxy = AA9B9FEE2045066900133A54 /* PBXContainerItemProxy */;
+		};
+		AA9B9FFA2045066900133A54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA9B9FD82045066900133A54 /* YWChat */;
+			targetProxy = AA9B9FF92045066900133A54 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AA9B9FE02045066900133A54 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA9B9FE12045066900133A54 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AA9B9FE52045066900133A54 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA9B9FE62045066900133A54 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA9B9FFF2045066900133A54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA9BA0002045066900133A54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA9BA0022045066900133A54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52F7EF0BD7361A796EB00AEC /* Pods-YWChat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L2E96H9FSJ;
+				INFOPLIST_FILE = YWChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssj.www.YWChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA9BA0032045066900133A54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8E97130203E404EA9521966 /* Pods-YWChat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L2E96H9FSJ;
+				INFOPLIST_FILE = YWChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssj.www.YWChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AA9BA0052045066900133A54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L2E96H9FSJ;
+				INFOPLIST_FILE = YWChatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssj.www.YWChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YWChat.app/YWChat";
+			};
+			name = Debug;
+		};
+		AA9BA0062045066900133A54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L2E96H9FSJ;
+				INFOPLIST_FILE = YWChatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssj.www.YWChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YWChat.app/YWChat";
+			};
+			name = Release;
+		};
+		AA9BA0082045066900133A54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L2E96H9FSJ;
+				INFOPLIST_FILE = YWChatUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssj.www.YWChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = YWChat;
+			};
+			name = Debug;
+		};
+		AA9BA0092045066900133A54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L2E96H9FSJ;
+				INFOPLIST_FILE = YWChatUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssj.www.YWChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = YWChat;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA9B9FD42045066900133A54 /* Build configuration list for PBXProject "YWChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA9B9FFF2045066900133A54 /* Debug */,
+				AA9BA0002045066900133A54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA9BA0012045066900133A54 /* Build configuration list for PBXNativeTarget "YWChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA9BA0022045066900133A54 /* Debug */,
+				AA9BA0032045066900133A54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA9BA0042045066900133A54 /* Build configuration list for PBXNativeTarget "YWChatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA9BA0052045066900133A54 /* Debug */,
+				AA9BA0062045066900133A54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA9BA0072045066900133A54 /* Build configuration list for PBXNativeTarget "YWChatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA9BA0082045066900133A54 /* Debug */,
+				AA9BA0092045066900133A54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA9B9FD12045066900133A54 /* Project object */;
+}
