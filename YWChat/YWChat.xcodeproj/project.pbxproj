@@ -14,6 +14,22 @@
 		AA9B9FE72045066900133A54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA9B9FE52045066900133A54 /* LaunchScreen.storyboard */; };
 		AA9B9FF22045066900133A54 /* YWChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9FF12045066900133A54 /* YWChatTests.swift */; };
 		AA9B9FFD2045066900133A54 /* YWChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9FFC2045066900133A54 /* YWChatUITests.swift */; };
+		AA9BA00B20450EC000133A54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA00A20450EC000133A54 /* UIKit.framework */; };
+		AA9BA00D20450EFE00133A54 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA00C20450EFE00133A54 /* AddressBook.framework */; };
+		AA9BA00F20450F0700133A54 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA00E20450F0700133A54 /* SystemConfiguration.framework */; };
+		AA9BA01120450F0F00133A54 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA01020450F0E00133A54 /* CoreLocation.framework */; };
+		AA9BA01320450F1600133A54 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA01220450F1600133A54 /* CoreTelephony.framework */; };
+		AA9BA01520450F1D00133A54 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA01420450F1D00133A54 /* CoreData.framework */; };
+		AA9BA01720450F2700133A54 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA01620450F2700133A54 /* libz.tbd */; };
+		AA9BA01920450F3000133A54 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA01820450F3000133A54 /* libstdc++.6.0.9.tbd */; };
+		AA9BA01B20450F3800133A54 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA01A20450F3800133A54 /* libsqlite3.0.tbd */; };
+		AA9BA01D20450F4000133A54 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA01C20450F4000133A54 /* libresolv.tbd */; };
+		AA9BA01F20450F4700133A54 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA01E20450F4700133A54 /* MobileCoreServices.framework */; };
+		AA9BA02120450F4F00133A54 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA02020450F4F00133A54 /* ImageIO.framework */; };
+		AA9BA02320450F5600133A54 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA02220450F5600133A54 /* AudioToolbox.framework */; };
+		AA9BA02520450F5E00133A54 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA02420450F5E00133A54 /* AVFoundation.framework */; };
+		AA9BA02720450F6600133A54 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA02620450F6600133A54 /* AssetsLibrary.framework */; };
+		AA9BA02920450F6D00133A54 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA02820450F6D00133A54 /* CoreMotion.framework */; };
 		BC25177231DB71E1B0BF64D6 /* libPods-YWChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC6950EC0C666D48F3C548E /* libPods-YWChat.a */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +65,23 @@
 		AA9B9FF82045066900133A54 /* YWChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YWChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9B9FFC2045066900133A54 /* YWChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWChatUITests.swift; sourceTree = "<group>"; };
 		AA9B9FFE2045066900133A54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA9BA00A20450EC000133A54 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AA9BA00C20450EFE00133A54 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		AA9BA00E20450F0700133A54 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		AA9BA01020450F0E00133A54 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AA9BA01220450F1600133A54 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		AA9BA01420450F1D00133A54 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		AA9BA01620450F2700133A54 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		AA9BA01820450F3000133A54 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		AA9BA01A20450F3800133A54 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		AA9BA01C20450F4000133A54 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		AA9BA01E20450F4700133A54 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		AA9BA02020450F4F00133A54 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		AA9BA02220450F5600133A54 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		AA9BA02420450F5E00133A54 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AA9BA02620450F6600133A54 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		AA9BA02820450F6D00133A54 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		AA9BA02A20450F8900133A54 /* YWChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YWChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		D8E97130203E404EA9521966 /* Pods-YWChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YWChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-YWChat/Pods-YWChat.release.xcconfig"; sourceTree = "<group>"; };
 		DDC6950EC0C666D48F3C548E /* libPods-YWChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YWChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -58,6 +91,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA9BA02920450F6D00133A54 /* CoreMotion.framework in Frameworks */,
+				AA9BA02720450F6600133A54 /* AssetsLibrary.framework in Frameworks */,
+				AA9BA02520450F5E00133A54 /* AVFoundation.framework in Frameworks */,
+				AA9BA02320450F5600133A54 /* AudioToolbox.framework in Frameworks */,
+				AA9BA02120450F4F00133A54 /* ImageIO.framework in Frameworks */,
+				AA9BA01F20450F4700133A54 /* MobileCoreServices.framework in Frameworks */,
+				AA9BA01D20450F4000133A54 /* libresolv.tbd in Frameworks */,
+				AA9BA01B20450F3800133A54 /* libsqlite3.0.tbd in Frameworks */,
+				AA9BA01920450F3000133A54 /* libstdc++.6.0.9.tbd in Frameworks */,
+				AA9BA01720450F2700133A54 /* libz.tbd in Frameworks */,
+				AA9BA01520450F1D00133A54 /* CoreData.framework in Frameworks */,
+				AA9BA01320450F1600133A54 /* CoreTelephony.framework in Frameworks */,
+				AA9BA01120450F0F00133A54 /* CoreLocation.framework in Frameworks */,
+				AA9BA00F20450F0700133A54 /* SystemConfiguration.framework in Frameworks */,
+				AA9BA00D20450EFE00133A54 /* AddressBook.framework in Frameworks */,
+				AA9BA00B20450EC000133A54 /* UIKit.framework in Frameworks */,
 				BC25177231DB71E1B0BF64D6 /* libPods-YWChat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,6 +131,22 @@
 		1CA5E86616AE26AE8A03F8F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA9BA02820450F6D00133A54 /* CoreMotion.framework */,
+				AA9BA02620450F6600133A54 /* AssetsLibrary.framework */,
+				AA9BA02420450F5E00133A54 /* AVFoundation.framework */,
+				AA9BA02220450F5600133A54 /* AudioToolbox.framework */,
+				AA9BA02020450F4F00133A54 /* ImageIO.framework */,
+				AA9BA01E20450F4700133A54 /* MobileCoreServices.framework */,
+				AA9BA01C20450F4000133A54 /* libresolv.tbd */,
+				AA9BA01A20450F3800133A54 /* libsqlite3.0.tbd */,
+				AA9BA01820450F3000133A54 /* libstdc++.6.0.9.tbd */,
+				AA9BA01620450F2700133A54 /* libz.tbd */,
+				AA9BA01420450F1D00133A54 /* CoreData.framework */,
+				AA9BA01220450F1600133A54 /* CoreTelephony.framework */,
+				AA9BA01020450F0E00133A54 /* CoreLocation.framework */,
+				AA9BA00E20450F0700133A54 /* SystemConfiguration.framework */,
+				AA9BA00C20450EFE00133A54 /* AddressBook.framework */,
+				AA9BA00A20450EC000133A54 /* UIKit.framework */,
 				DDC6950EC0C666D48F3C548E /* libPods-YWChat.a */,
 			);
 			name = Frameworks;
@@ -90,6 +155,7 @@
 		AA9B9FD02045066900133A54 = {
 			isa = PBXGroup;
 			children = (
+				AA9BA02A20450F8900133A54 /* YWChat-Bridging-Header.h */,
 				AA9B9FDB2045066900133A54 /* YWChat */,
 				AA9B9FF02045066900133A54 /* YWChatTests */,
 				AA9B9FFB2045066900133A54 /* YWChatUITests */,
@@ -525,6 +591,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssj.www.YWChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YWChat-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -542,6 +609,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssj.www.YWChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YWChat-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
