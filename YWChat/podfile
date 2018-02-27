@@ -1,0 +1,10 @@
+source 'https://github.com/MooYooOrg/Specs.git'
+source 'https://github.com/aliyun/aliyun-specs.git'
+
+platform :ios,'9.0'
+
+target "YWChat" do
+
+   pod 'YunWangOpenIM', '3.8.2'
+
+end
