@@ -30,6 +30,7 @@
 		AA9BA02520450F5E00133A54 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA02420450F5E00133A54 /* AVFoundation.framework */; };
 		AA9BA02720450F6600133A54 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA02620450F6600133A54 /* AssetsLibrary.framework */; };
 		AA9BA02920450F6D00133A54 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9BA02820450F6D00133A54 /* CoreMotion.framework */; };
+		AA9BA02F2047DA9200133A54 /* YWLauncheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9BA02E2047DA9200133A54 /* YWLauncheManager.swift */; };
 		BC25177231DB71E1B0BF64D6 /* libPods-YWChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC6950EC0C666D48F3C548E /* libPods-YWChat.a */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		AA9BA02620450F6600133A54 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		AA9BA02820450F6D00133A54 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		AA9BA02A20450F8900133A54 /* YWChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YWChat-Bridging-Header.h"; sourceTree = "<group>"; };
+		AA9BA02E2047DA9200133A54 /* YWLauncheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWLauncheManager.swift; sourceTree = "<group>"; };
 		D8E97130203E404EA9521966 /* Pods-YWChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YWChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-YWChat/Pods-YWChat.release.xcconfig"; sourceTree = "<group>"; };
 		DDC6950EC0C666D48F3C548E /* libPods-YWChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YWChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -184,6 +186,7 @@
 				AA9B9FE32045066900133A54 /* Assets.xcassets */,
 				AA9B9FE52045066900133A54 /* LaunchScreen.storyboard */,
 				AA9B9FE82045066900133A54 /* Info.plist */,
+				AA9BA02E2047DA9200133A54 /* YWLauncheManager.swift */,
 			);
 			path = YWChat;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			files = (
 				AA9B9FDF2045066900133A54 /* ViewController.swift in Sources */,
 				AA9B9FDD2045066900133A54 /* AppDelegate.swift in Sources */,
+				AA9BA02F2047DA9200133A54 /* YWLauncheManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

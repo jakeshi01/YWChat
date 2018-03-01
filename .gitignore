@@ -1,13 +1,6 @@
 # Xcode
 *.lock
 
-# xib临时文件
-*~.nib
-
-
-
-# 以下ignore来自网络整理 https://github.com/github/gitignore/blob/master/Objective-C.gitignore
-
 ## Build generated
 build/
 DerivedData/
@@ -37,4 +30,4 @@ xcuserdata/
 
 ## CocoaPods
 Pods
-Meijiabang.xcworkspace
+YWChat.xcworkspace
