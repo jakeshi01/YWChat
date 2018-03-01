@@ -20,11 +20,11 @@ class YWLauncheManager: NSObject {
 
 extension YWLauncheManager {
     
-    func Launching() {
+    func Launching(with PushCertName: String) {
         try? YWAPI.sharedInstance().syncInit(withOwnAppKey: appkey)
         #if DEBUG
             YWAPI.sharedInstance().getGlobalLogService().needCloseDiag = false
-            YWAPI.sharedInstance().getGlobalPushService().setXPushCertName("sand_meijiabang")
+            YWAPI.sharedInstance().getGlobalPushService().setXPushCertName(PushCertName)
         #else
             YWAPI.sharedInstance().getGlobalLogService().needCloseDiag = true
             YWAPI.sharedInstance().getGlobalPushService().setXPushCertName("production")
