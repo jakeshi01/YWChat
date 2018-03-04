@@ -7,6 +7,8 @@
 //
 
 
+#import "YWOCBridge.h"
+
 #import <WXOpenIMTribeKit/YWTribeKit.h>
 #import <WXOpenIMSDKFMWK/YWFMWK.h>
 #import <WXOpenIMSDKFMWK/IYWMessage.h>
