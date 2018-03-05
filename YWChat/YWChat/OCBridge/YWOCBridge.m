@@ -18,11 +18,11 @@
 
 @implementation YWOCBridge
 
-+ (NSError *)registerAppKey: (NSString *)key {
++ (NSInteger)registerAppKey: (NSString *)key {
     NSError *error = nil;
     [[YWAPI sharedInstance] setEnvironment:YWEnvironmentRelease];
     [[YWAPI sharedInstance] syncInitWithOwnAppKey:key getError:&error];
-    return error;
+    return error.code;
 }
 
 + (void)configImKit: (YWIMKit *)imKit {

@@ -31,6 +31,8 @@ extension YWLauncheManager {
             #endif
             YWOCBridge.handleAPNSPush(imKit, description: description)
             setAvatarStyle()
+        } else {
+            print("初始化失败")
         }
         
     }
@@ -40,15 +42,13 @@ extension YWLauncheManager {
 private extension YWLauncheManager {
     
     func Initialization(with appKey: String) -> Bool {
+
+        let error: Int = YWOCBridge.registerAppKey(appKey)
         
-        guard let error: NSError = YWOCBridge.registerAppKey(appKey) as NSError? else {
-            return false
-        }
-        
-        if error.code != 0 && error.code == YWSdkInitErrorCode.alreadyInited.rawValue {
+        if error != 0 && error == YWSdkInitErrorCode.alreadyInited.rawValue {
             //初始化失败
             return false
-        } else if error.code == 0 {
+        } else if error == 0 {
             // 首次初始化成功, 获取一个IMKit并持有
             imKit = YWAPI.sharedInstance().fetchIMKitForOpenIM()
             YWOCBridge.configImKit(imKit)

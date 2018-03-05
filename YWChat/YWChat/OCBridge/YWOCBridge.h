@@ -12,7 +12,7 @@
 
 @interface YWOCBridge : NSObject
 
-+ (NSError *)registerAppKey: (NSString *)key;
++ (NSInteger)registerAppKey: (NSString *)key;
 + (void)configImKit: (YWIMKit *)imKit;
 + (void)handleAPNSPush:(YWIMKit *)imKit description: (NSString*)description;
 
