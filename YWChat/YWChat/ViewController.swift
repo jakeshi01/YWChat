@@ -49,6 +49,12 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(conversationListController, animated: true)
     }
     
+    @IBAction func chat(_ sender: UIButton) {
+        guard let conversationController = YWLauncheManager.shared.getConversationController(with: "iwangxinvisitor695") else { return }
+        navigationController?.pushViewController(conversationController, animated: true)
+    }
+    
+    // MARK: - 测试
     @IBAction func test(_ sender: UIButton) {
         unReadItem.title = "\(YWLauncheManager.shared.unReadCount)未读"
     }

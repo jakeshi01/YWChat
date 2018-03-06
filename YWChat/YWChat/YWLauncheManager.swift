@@ -65,6 +65,8 @@ extension YWLauncheManager {
             
             listenConnectionStatus()
             listenUnreadChanged()
+            listenOnClickUrl()
+            listenNewMessage()
             setAudioCategory()
             setEServiceProfile()
         } else {
@@ -104,13 +106,14 @@ private extension YWLauncheManager {
             guard let `self` = self else { return }
             self.lastConnectionStatus = status
             NotificationCenter.default.post(name: .YWConnectionStatusChanged, object: self, userInfo: ["status": status])
+            // TODO: App自定义处理
             if (status == .forceLogout) || (status == .manualLogout) || (status == .autoConnectFailed) {
                 // 手动登出、被踢、自动连接失败，都退出到登录页面
                 print("退出登录")
             } else if status == .connected {
                 print("需要监听消息")
             }
-            }, forKey: description, of: .developer)
+        }, forKey: description, of: .developer)
     }
     
     /// 监听未读数
@@ -119,6 +122,37 @@ private extension YWLauncheManager {
         guard let imKit = imKit else { return }
         imKit.imCore.getConversationService().addConversationTotalUnreadChangedBlock({ (unRead) in
             NotificationCenter.default.post(name: .YWUnreadChanged, object: self, userInfo: ["count": unRead])
+        }, forKey: description, of: .developer)
+    }
+    
+    /// 监听链接点击事件
+    func listenOnClickUrl() {
+        
+        guard let imKit = imKit else { return }
+        imKit.setOpenURLBlock({ (urlString, controller) in
+            // TODO: App自定义处理
+            print("点击了:", urlString ?? "")
+        }, allowedURLTypes: nil)
+    }
+    
+    /// 监听新消息
+    func listenNewMessage() {
+        
+        guard let imKit = imKit else { return }
+        imKit.imCore.getConversationService().add(onNewMessageBlockV2: { (messages, isOffLine) in
+            // TODO: App自定义处理
+            
+            // 可以在此处根据需要播放提示音
+            messages?.forEach({ (message) in
+                if isOffLine {
+                    print("离线消息")
+                } else {
+                    print("在线消息")
+                }
+                if let message = message as? IYWMessage {
+                    print(message.messageId)
+                }
+            })
         }, forKey: description, of: .developer)
     }
     
@@ -134,6 +168,7 @@ private extension YWLauncheManager {
         
         guard let imKit = imKit else { return }
         imKit.fetchProfileForEServiceBlock = { person, progressBlock, completionBlock in
+            // TODO: App自定义处理
             let item: YWProfileItem = YWProfileItem()
             item.person = person
             item.displayName = person?.personId
@@ -170,6 +205,11 @@ extension YWLauncheManager {
 
 // MARK: - 聊天相关
 extension YWLauncheManager {
+    
+    func getConversationController(with conversationId: String) -> YWConversationViewController? {
+        guard let imKit = imKit else { return nil }
+        return imKit.makeConversationViewController(withConversationId: conversationId)
+    }
     
     func getConversationListController(with navigationController: UINavigationController?) -> YWConversationListViewController? {
         

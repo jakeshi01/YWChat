@@ -59,7 +59,10 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u39-uB-UX2">
                                         <rect key="frame" x="171.5" y="0.0" width="171.5" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="私聊"/>
+                                        <connections>
+                                            <action selector="chat:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Ae-Xa-dM3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
