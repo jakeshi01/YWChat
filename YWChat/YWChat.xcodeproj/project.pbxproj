@@ -157,6 +157,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		35011EBA204E3A2A006CA6DD /* YunWangAdapter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = YunWangAdapter;
+			sourceTree = "<group>";
+		};
 		AA9B9FD02045066900133A54 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +190,7 @@
 		AA9B9FDB2045066900133A54 /* YWChat */ = {
 			isa = PBXGroup;
 			children = (
+				35011EBA204E3A2A006CA6DD /* YunWangAdapter */,
 				AA9B9FDC2045066900133A54 /* AppDelegate.swift */,
 				AA9B9FDE2045066900133A54 /* ViewController.swift */,
 				AA9B9FE02045066900133A54 /* Main.storyboard */,

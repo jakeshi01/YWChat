@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     
     // MARK: - 聊天相关
     @IBAction func conversationList(_ sender: UIButton) {
-        guard let conversationListController = YWLauncheManager.shared.conversationListController else {
+        guard let conversationListController = YWLauncheManager.shared.getConversationListController(with: navigationController) else {
             print("未初始化")
             return
         }

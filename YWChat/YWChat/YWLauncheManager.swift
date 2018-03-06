@@ -46,11 +46,6 @@ extension Notification.Name {
             return "重连成功"
         }
     }
-    
-    var conversationListController: YWConversationListViewController? {
-        guard let imKit = imKit else { return nil }
-        return imKit.makeConversationListViewController()
-    }
 }
 
 extension YWLauncheManager {
@@ -103,6 +98,7 @@ private extension YWLauncheManager {
     
     /// 监听连接状态
     func listenConnectionStatus() {
+        
         guard let imKit = imKit else { return }
         imKit.imCore.getLoginService().addConnectionStatusChangedBlock({ [weak self] (status, error) in
             guard let `self` = self else { return }
@@ -119,6 +115,7 @@ private extension YWLauncheManager {
     
     /// 监听未读数
     func listenUnreadChanged() {
+        
         guard let imKit = imKit else { return }
         imKit.imCore.getConversationService().addConversationTotalUnreadChangedBlock({ (unRead) in
             NotificationCenter.default.post(name: .YWUnreadChanged, object: self, userInfo: ["count": unRead])
@@ -127,12 +124,14 @@ private extension YWLauncheManager {
     
     /// 设置语音播放模式
     func setAudioCategory() {
+        
         guard let imKit = imKit else { return }
         imKit.audioSessionCategory = AVAudioSessionCategoryPlayback
     }
     
     /// 设置客服头像和昵称
     func setEServiceProfile() {
+        
         guard let imKit = imKit else { return }
         imKit.fetchProfileForEServiceBlock = { person, progressBlock, completionBlock in
             let item: YWProfileItem = YWProfileItem()
@@ -149,6 +148,7 @@ private extension YWLauncheManager {
 extension YWLauncheManager {
 
     func login(with userId: String, password: String, successBlock: (() -> Void)?, failedBlock: ((_ error: Error?) -> Void)?) {
+        
         guard let imKit = imKit else {
             failedBlock?(nil)
             return
@@ -161,9 +161,25 @@ extension YWLauncheManager {
     }
     
     func logout() {
+        
         guard let imKit = imKit else { return }
         imKit.imCore.getLoginService().asyncLogout(completionBlock: nil)
     }
 
+}
+
+// MARK: - 聊天相关
+extension YWLauncheManager {
+    
+    func getConversationListController(with navigationController: UINavigationController?) -> YWConversationListViewController? {
+        
+        guard let imKit = imKit, let controller = imKit.makeConversationListViewController() else { return nil }
+        controller.didSelectItemBlock = { [weak navigationController] conversation in
+            guard let navigationController = navigationController,
+                let conversationController = imKit.makeConversationViewController(withConversationId: conversation?.conversationId) else { return }
+            navigationController.pushViewController(conversationController, animated: true)
+        }
+        return controller
+    }
 }
 
