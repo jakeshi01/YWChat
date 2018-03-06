@@ -14,8 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        YWLauncheManager.shared.Launching(with: "23271397", debugPushCertName: "sand_meijiabang")
+        
         // Override point for customization after application launch.
+        YWLauncheManager.shared.Launching(with: "23015524", debugPushCertName: "sandbox")
+//        YWLauncheManager.shared.Launching(with: "23271397", debugPushCertName: "sand_meijiabang")
         return true
     }
 

@@ -16,4 +16,6 @@
 + (void)configImKit: (YWIMKit *)imKit;
 + (void)handleAPNSPush:(YWIMKit *)imKit description: (NSString*)description;
 
++ (void)loginWithImKit:(YWIMKit *)imKit UserId:(NSString *)userId Password:(NSString *)password SuccessBlock:(void(^)(void))successBlock FailedBlock:(void (^)(NSError *))failedBlock;
+
 @end

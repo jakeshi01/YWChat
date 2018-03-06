@@ -87,6 +87,29 @@
     } forKey:description ofPriority:YWBlockPriorityDeveloper];
 }
 
++ (void)loginWithImKit:(YWIMKit *)imKit UserId:(NSString *)userId Password:(NSString *)password SuccessBlock:(void(^)(void))successBlock FailedBlock:(void (^)(NSError *))failedBlock
+{
+    // 登录之前，先告诉IM如何获取登录信息。
+    // 当IM向服务器发起登录请求之前，会调用这个block，来获取用户名和密码信息。
+    [[imKit.IMCore getLoginService] setFetchLoginInfoBlock:^(YWFetchLoginInfoCompletionBlock  _Nonnull aCompletionBlock) {
+        aCompletionBlock(YES, userId, password, nil, nil);
+    }];
+    
+    // 发起登录
+    [[imKit.IMCore getLoginService] asyncLoginWithCompletionBlock:^(NSError *aError, NSDictionary *aResult) {
+        if (aError.code == 0 || [[imKit.IMCore getLoginService] isCurrentLogined]) {
+            // 登录成功
+            if (successBlock) {
+                successBlock();
+            }
+        } else {
+            if (failedBlock) {
+                failedBlock(aError);
+            }
+        }
+    }];
+}
+
 @end
 
 
