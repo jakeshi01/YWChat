@@ -70,15 +70,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendCustomizeMessage(_ sender: UIButton) {
-        guard let imKit = YWLauncheManager.shared.imKit,
-            let conversation = imKit.imCore.getConversationService().fetchConversation(byConversationId: "iwangxinvisitor695") else { return }
-        let customizeBody = YWMessageBodyCustomize(messageCustomizeContent: "{\"content\":\"wall\",\"age\":\"22\",\"type\":\"new\"}" , summary: "新的消息")
-        conversation.asyncSend(customizeBody, progress: nil, completion: nil)
+        let content = "{\"\(MessageTypeKey)\":\"\(CustomizeMessageType.B)\",\"content\":\"内容\"}"
+        YWLauncheManager.shared.sendCustomizeMessage(by: "iwangxinvisitor695", content: content, summary: "自定义消息")
     }
     
     // MARK: - 测试
     @IBAction func test(_ sender: UIButton) {
-
+        
     }
     
     deinit {

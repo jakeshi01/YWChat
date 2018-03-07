@@ -226,21 +226,32 @@ extension YWLauncheManager {
         return controller
     }
     
+    func sendCustomizeMessage(by conversationId: String, content: String, summary: String) {
+        guard let imKit = YWLauncheManager.shared.imKit,
+            let conversation = imKit.imCore.getConversationService().fetchConversation(byConversationId: conversationId) else { return }
+        let customizeBody = YWMessageBodyCustomize(messageCustomizeContent: content, summary: summary)
+        conversation.asyncSend(customizeBody, progress: nil, completion: nil)
+    }
+    
     /// 展示自定义消息
     private func showCustomMessageInConversationViewController(_ controller: YWConversationViewController) {
         controller.setHook4BubbleViewModel { (message) -> YWBaseBubbleViewModel? in
             guard let message = message, let messageBody = message.messageBody as? YWMessageBodyCustomize else { return nil }
             guard let contentData = messageBody.content.data(using: String.Encoding.utf8) else { return nil }
             guard let contentDict = try? JSONSerialization.jsonObject(with: contentData, options: .mutableContainers) as? [String: Any] else { return nil }
-            guard let messageType = contentDict?["type"] as? String else { return nil }
-            if messageType == "new" {
-                return NewBubbleViewModel(message: message)
-            }
-            return nil
+            guard let _ = contentDict?[MessageTypeKey] as? String else { return nil }
+            return CustomizeMessageViewModel(message: message)
         }
         controller.setHook4BubbleView { (message) -> YWBaseBubbleChatView? in
-            guard let message = message as? NewBubbleViewModel else { return nil }
-            return NewBubbleChatView(viewModel: message)
+            guard let message = message as? CustomizeMessageViewModel else { return nil }
+            switch message.messageType {
+            case .unknown:
+                return nil
+            case .A:
+                return ABubbleChatView(message: message)
+            case .B:
+                return BBubbleChatView(message: message)
+            }
         }
     }
 
