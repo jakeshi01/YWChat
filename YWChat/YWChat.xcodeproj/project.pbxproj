@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35011EC2204F8457006CA6DD /* NewBubbleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35011EC1204F8457006CA6DD /* NewBubbleViewModel.swift */; };
+		35C99113204F97320052AC6C /* NewBubbleChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C99112204F97320052AC6C /* NewBubbleChatView.swift */; };
 		AA9B9FDD2045066900133A54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9FDC2045066900133A54 /* AppDelegate.swift */; };
 		AA9B9FDF2045066900133A54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9FDE2045066900133A54 /* ViewController.swift */; };
 		AA9B9FE22045066900133A54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA9B9FE02045066900133A54 /* Main.storyboard */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		35011EC1204F8457006CA6DD /* NewBubbleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBubbleViewModel.swift; sourceTree = "<group>"; };
+		35C99112204F97320052AC6C /* NewBubbleChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBubbleChatView.swift; sourceTree = "<group>"; };
 		52F7EF0BD7361A796EB00AEC /* Pods-YWChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YWChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YWChat/Pods-YWChat.debug.xcconfig"; sourceTree = "<group>"; };
 		AA9B9FD92045066900133A54 /* YWChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YWChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9B9FDC2045066900133A54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 		35011EBA204E3A2A006CA6DD /* YunWangAdapter */ = {
 			isa = PBXGroup;
 			children = (
+				35011EC1204F8457006CA6DD /* NewBubbleViewModel.swift */,
+				35C99112204F97320052AC6C /* NewBubbleChatView.swift */,
 			);
 			path = YunWangAdapter;
 			sourceTree = "<group>";
@@ -442,8 +448,10 @@
 			files = (
 				AA9B9FDF2045066900133A54 /* ViewController.swift in Sources */,
 				AA9BA0372047EC8000133A54 /* YWOCBridge.m in Sources */,
+				35011EC2204F8457006CA6DD /* NewBubbleViewModel.swift in Sources */,
 				AA9B9FDD2045066900133A54 /* AppDelegate.swift in Sources */,
 				AA9BA02F2047DA9200133A54 /* YWLauncheManager.swift in Sources */,
+				35C99113204F97320052AC6C /* NewBubbleChatView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

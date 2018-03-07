@@ -50,13 +50,35 @@ class ViewController: UIViewController {
     }
     
     @IBAction func chat(_ sender: UIButton) {
-        guard let conversationController = YWLauncheManager.shared.getConversationController(with: "iwangxinvisitor695") else { return }
+        guard let conversationController = YWLauncheManager.shared.getConversationController(with: "iwangxinvisitor695", showCustomMessage: true) else { return }
         navigationController?.pushViewController(conversationController, animated: true)
+    }
+    
+    @IBAction func sendMessage(_ sender: UIButton) {
+        guard let imKit = YWLauncheManager.shared.imKit,
+            let conversation = imKit.imCore.getConversationService().fetchConversation(byConversationId: "iwangxinvisitor695") else { return }
+        let body = YWMessageBodyText(messageText: "你好呀！我要删除")
+        conversation.asyncSend(body, progress: { (progress, messageId) in
+            print("进度:\(progress)")
+        }) { (error, messageId) in
+            if error == nil {
+                print("发送成功")
+            } else {
+                print("发送失败")
+            }
+        }
+    }
+    
+    @IBAction func sendCustomizeMessage(_ sender: UIButton) {
+        guard let imKit = YWLauncheManager.shared.imKit,
+            let conversation = imKit.imCore.getConversationService().fetchConversation(byConversationId: "iwangxinvisitor695") else { return }
+        let customizeBody = YWMessageBodyCustomize(messageCustomizeContent: "{\"content\":\"wall\",\"age\":\"22\",\"type\":\"new\"}" , summary: "新的消息")
+        conversation.asyncSend(customizeBody, progress: nil, completion: nil)
     }
     
     // MARK: - 测试
     @IBAction func test(_ sender: UIButton) {
-        unReadItem.title = "\(YWLauncheManager.shared.unReadCount)未读"
+
     }
     
     deinit {

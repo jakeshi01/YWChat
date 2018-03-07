@@ -47,21 +47,35 @@
                                     <constraint firstAttribute="height" constant="30" id="Sw6-t7-x8R"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EBt-2R-rBi">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="EBt-2R-rBi">
                                 <rect key="frame" x="16" y="110" width="343" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9C-us-kKB">
-                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
                                         <state key="normal" title="会话列表"/>
                                         <connections>
                                             <action selector="conversationList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vdc-gp-HM6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u39-uB-UX2">
-                                        <rect key="frame" x="171.5" y="0.0" width="171.5" height="30"/>
+                                        <rect key="frame" x="99" y="0.0" width="31" height="30"/>
                                         <state key="normal" title="私聊"/>
                                         <connections>
                                             <action selector="chat:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Ae-Xa-dM3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umg-nT-G7P">
+                                        <rect key="frame" x="167" y="0.0" width="62" height="30"/>
+                                        <state key="normal" title="发送消息"/>
+                                        <connections>
+                                            <action selector="sendMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5kO-yo-aAI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufj-95-KBU">
+                                        <rect key="frame" x="266" y="0.0" width="77" height="30"/>
+                                        <state key="normal" title="自定义消息"/>
+                                        <connections>
+                                            <action selector="sendCustomizeMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sfj-L2-MGw"/>
                                         </connections>
                                     </button>
                                 </subviews>

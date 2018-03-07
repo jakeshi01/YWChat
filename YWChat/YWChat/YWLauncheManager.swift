@@ -206,9 +206,13 @@ extension YWLauncheManager {
 // MARK: - 聊天相关
 extension YWLauncheManager {
     
-    func getConversationController(with conversationId: String) -> YWConversationViewController? {
-        guard let imKit = imKit else { return nil }
-        return imKit.makeConversationViewController(withConversationId: conversationId)
+    func getConversationController(with conversationId: String, showCustomMessage: Bool = false) -> YWConversationViewController? {
+        guard let imKit = imKit,
+            let controller = imKit.makeConversationViewController(withConversationId: conversationId) else { return nil }
+        if showCustomMessage {
+            showCustomMessageInConversationViewController(controller)
+        }
+        return controller
     }
     
     func getConversationListController(with navigationController: UINavigationController?) -> YWConversationListViewController? {
@@ -221,5 +225,24 @@ extension YWLauncheManager {
         }
         return controller
     }
+    
+    /// 展示自定义消息
+    private func showCustomMessageInConversationViewController(_ controller: YWConversationViewController) {
+        controller.setHook4BubbleViewModel { (message) -> YWBaseBubbleViewModel? in
+            guard let message = message, let messageBody = message.messageBody as? YWMessageBodyCustomize else { return nil }
+            guard let contentData = messageBody.content.data(using: String.Encoding.utf8) else { return nil }
+            guard let contentDict = try? JSONSerialization.jsonObject(with: contentData, options: .mutableContainers) as? [String: Any] else { return nil }
+            guard let messageType = contentDict?["type"] as? String else { return nil }
+            if messageType == "new" {
+                return NewBubbleViewModel(message: message)
+            }
+            return nil
+        }
+        controller.setHook4BubbleView { (message) -> YWBaseBubbleChatView? in
+            guard let message = message as? NewBubbleViewModel else { return nil }
+            return NewBubbleChatView(viewModel: message)
+        }
+    }
+
 }
 
