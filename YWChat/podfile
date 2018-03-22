@@ -1,10 +1,14 @@
 source 'https://github.com/MooYooOrg/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/aliyun/aliyun-specs.git'
 
 platform :ios,'9.0'
 
+use_frameworks!
+
 target "YWChat" do
 
    pod 'YunWangOpenIM', '3.8.2'
-
+   pod 'ObjectMapper', '3.0.0'
+   
 end

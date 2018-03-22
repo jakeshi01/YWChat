@@ -6,10 +6,24 @@
 //  Copyright © 2018年 Jake. All rights reserved.
 //
 
-extension Notification.Name {
-    static let YWConnectionStatusChanged = Notification.Name(rawValue: "ConnectionStatusChanged")
-    static let YWUnreadChanged = Notification.Name(rawValue: "UnreadChanged")
+@objc protocol YWLauncheManagerDelegate {
+    
+    /// 连接状态改变
+    @objc optional func connectionStatusChanged(status: YWIMConnectionStatus, error: Error?)
+    /// 未读数改变
+    @objc optional func conversationTotalUnreadChanged(unRead: Int)
+    /// 聊天中点击URL
+    @objc optional func openURL(urlString: String?, parentController: UIViewController?)
+    /// 接收信息
+    @objc optional func receive(messages: Array<Any>?, isOffLine: Bool)
+    /// 配置客服信息
+    @objc optional func fetchProfile(for eServicePerson: YWPerson?) -> YWProfileItem
+    
+    
+    @objc optional func customizeMessage(with type: String) -> CustomizeMessageViewModel.Type
+//    func indexNavigationBarDidClickVoiceButton()
 }
+
 
 @objc class YWLauncheManager: NSObject {
     
@@ -18,33 +32,11 @@ extension Notification.Name {
     private override init() {}
     
     var imKit: YWIMKit?
+    var delegate: YWLauncheManagerDelegate?
     
     var unReadCount: Int {
         guard let imKit = imKit else { return 0 }
         return Int(imKit.imCore.getConversationService().countOfUnreadMessages)
-    }
-    
-    var statusName: String {
-        switch lastConnectionStatus {
-        case .autoConnectFailed:
-            return "自动连接失败"
-        case .connected:
-            return "连接成功"
-        case .connecting:
-            return "连接中"
-        case .disconnected:
-            return "断开连接"
-        case .forceLogout:
-            return "被踢"
-        case .manualDisconnected:
-            return "主动断开连接"
-        case .manualLogined:
-            return "主动登录成功"
-        case .manualLogout:
-            return "主动登出"
-        case .reconnected:
-            return "重连成功"
-        }
     }
 }
 
@@ -105,14 +97,7 @@ private extension YWLauncheManager {
         imKit.imCore.getLoginService().addConnectionStatusChangedBlock({ [weak self] (status, error) in
             guard let `self` = self else { return }
             self.lastConnectionStatus = status
-            NotificationCenter.default.post(name: .YWConnectionStatusChanged, object: self, userInfo: ["status": status])
-            // TODO: App自定义处理
-            if (status == .forceLogout) || (status == .manualLogout) || (status == .autoConnectFailed) {
-                // 手动登出、被踢、自动连接失败，都退出到登录页面
-                print("退出登录")
-            } else if status == .connected {
-                print("需要监听消息")
-            }
+            self.delegate?.connectionStatusChanged?(status: status, error: error)
         }, forKey: description, of: .developer)
     }
     
@@ -120,8 +105,9 @@ private extension YWLauncheManager {
     func listenUnreadChanged() {
         
         guard let imKit = imKit else { return }
-        imKit.imCore.getConversationService().addConversationTotalUnreadChangedBlock({ (unRead) in
-            NotificationCenter.default.post(name: .YWUnreadChanged, object: self, userInfo: ["count": unRead])
+        imKit.imCore.getConversationService().addConversationTotalUnreadChangedBlock({ [weak self] (unRead) in
+            guard let `self` = self else { return }
+            self.delegate?.conversationTotalUnreadChanged?(unRead: Int(unRead))
         }, forKey: description, of: .developer)
     }
     
@@ -129,9 +115,9 @@ private extension YWLauncheManager {
     func listenOnClickUrl() {
         
         guard let imKit = imKit else { return }
-        imKit.setOpenURLBlock({ (urlString, controller) in
-            // TODO: App自定义处理
-            print("点击了:", urlString ?? "")
+        imKit.setOpenURLBlock({ [weak self] (urlString, controller) in
+            guard let `self` = self else { return }
+            self.delegate?.openURL?(urlString: urlString, parentController: controller)
         }, allowedURLTypes: nil)
     }
     
@@ -139,20 +125,9 @@ private extension YWLauncheManager {
     func listenNewMessage() {
         
         guard let imKit = imKit else { return }
-        imKit.imCore.getConversationService().add(onNewMessageBlockV2: { (messages, isOffLine) in
-            // TODO: App自定义处理
-            
-            // 可以在此处根据需要播放提示音
-            messages?.forEach({ (message) in
-                if isOffLine {
-                    print("离线消息")
-                } else {
-                    print("在线消息")
-                }
-                if let message = message as? IYWMessage {
-                    print(message.messageId)
-                }
-            })
+        imKit.imCore.getConversationService().add(onNewMessageBlockV2: { [weak self] (messages, isOffLine) in
+            guard let `self` = self else { return }
+            self.delegate?.receive?(messages: messages, isOffLine: isOffLine)
         }, forKey: description, of: .developer)
     }
     
@@ -168,11 +143,7 @@ private extension YWLauncheManager {
         
         guard let imKit = imKit else { return }
         imKit.fetchProfileForEServiceBlock = { person, progressBlock, completionBlock in
-            // TODO: App自定义处理
-            let item: YWProfileItem = YWProfileItem()
-            item.person = person
-            item.displayName = person?.personId
-            item.avatar = #imageLiteral(resourceName: "meijiabang_icon")
+            let item = self.delegate?.fetchProfile?(for: person)
             completionBlock?(true, item)
         }
     }

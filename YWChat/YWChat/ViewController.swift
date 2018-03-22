@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(statusChange(notification:)), name: .YWConnectionStatusChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(unReadChange(notification:)), name: .YWUnreadChanged, object: nil)
-        title = YWLauncheManager.shared.statusName
+        title = YunWangAdapter.shared.statusName
         unReadItem.title = "\(YWLauncheManager.shared.unReadCount)未读"
     }
 
@@ -29,15 +29,11 @@ class ViewController: UIViewController {
 
     // MARK: - 登录相关
     @IBAction func login(_ sender: UIButton) {
-        YWLauncheManager.shared.login(with: "visitor870", password: "taobao1234", successBlock: {
-            print("成功")
-        }) { (error) in
-            print("失败")
-        }
+        YunWangAdapter.shared.login(with: "visitor870", password: "taobao1234")
     }
     
     @IBAction func logout(_ sender: UIButton) {
-        YWLauncheManager.shared.logout()
+        YunWangAdapter.shared.logout()
     }
     
     // MARK: - 聊天相关
@@ -87,11 +83,11 @@ class ViewController: UIViewController {
 extension ViewController {
     
     @objc func statusChange(notification: Notification) {
-        title = YWLauncheManager.shared.statusName
+        title = YunWangAdapter.shared.statusName
     }
     
     @objc func unReadChange(notification: Notification) {
-        unReadItem.title = "\(YWLauncheManager.shared.unReadCount)未读"
+        unReadItem.title = "\(YunWangAdapter.shared.unReadCount)未读"
     }
 
 }

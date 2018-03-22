@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Override point for customization after application launch.
-        YWLauncheManager.shared.Launching(with: "23015524", debugPushCertName: "sandbox")
+        YunWangAdapter.shared.Launching(with: "23015524", debugPushCertName: "sandbox")
 //        YWLauncheManager.shared.Launching(with: "23271397", debugPushCertName: "sand_meijiabang")
         return true
     }
