@@ -6,27 +6,11 @@
 //  Copyright © 2018年 Jake. All rights reserved.
 //
 
-
-
-let MessageTypeKey: String = "messageType"
-
-enum CustomizeMessageType: String {
-    
-    case unknown = ""
-    case A = "A"
-    case B = "B"
-    
-}
-
 class CustomizeMessageViewModel: YWBaseBubbleViewModel {
 
     open var content: [String: Any]?
-    var messageType: CustomizeMessageType {
-        guard let content = content,
-            let typeStr = content[MessageTypeKey] as? String,
-            let type = CustomizeMessageType.init(rawValue: typeStr) else {
-            return .unknown
-        }
+    var messageType: String? {
+        guard let content = content, let type = content[MessageTypeKey] as? String else { return nil }
         return type
     }
 

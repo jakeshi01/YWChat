@@ -50,14 +50,6 @@ class YunWangAdapter: NSObject {
         manager.delegate = self
         manager.Launching(with: appKey, debugPushCertName: debugPushCertName, releasePushCertName: releasePushCertName)
     }
-
-//    func send(customizeMessage: CustomizeMessageViewModel, by conversationId: String, summary: String) {
-//        guard let imKit = YWLauncheManager.shared.imKit,
-//            let conversation = imKit.imCore.getConversationService().fetchConversation(byConversationId: conversationId),
-//            let content = customizeMessage.toJSONString() else { return }
-//        let customizeBody = YWMessageBodyCustomize(messageCustomizeContent: content, summary: summary)
-//        conversation.asyncSend(customizeBody, progress: nil, completion: nil)
-//    }
 }
 
 // MARK: - 登录相关
@@ -73,6 +65,38 @@ extension YunWangAdapter {
     
     func logout() {
         manager.logout()
+    }
+}
+
+
+// MARK: - 聊天相关
+extension YunWangAdapter {
+    
+    func pushConversationListController(with navigationController: UINavigationController) {
+        guard let controller = manager.getConversationListController() else { return }
+        controller.didSelectItemBlock = { [weak self] conversation in
+            guard let `self` = self,
+                let conversationController = self.manager.getConversationController(with: conversation?.conversationId) else { return }
+            navigationController.pushViewController(conversationController, animated: true)
+        }
+        navigationController.pushViewController(controller, animated: true)
+    }
+    
+    func sendMessage(by conversationId: String, content: String) {
+        manager.sendMessage(by: conversationId, content: content, progressBlock: { (progress, messageId) in
+            print("进度:\(progress)")
+        }) { (error, messageId) in
+            if error == nil {
+                print("发送成功")
+            } else {
+                print("发送失败")
+            }
+        }
+    }
+    
+    func sendCustomizeMessage(by conversationId: String, message: BaseMessageModel, summary: String) {
+        guard let content = message.toJSONString() else { return }
+        manager.sendCustomizeMessage(by: conversationId, content: content, summary: summary)
     }
 }
 
@@ -120,14 +144,20 @@ extension YunWangAdapter: YWLauncheManagerDelegate {
         return item
     }
     
-
-//    func customizeMessage(with type: String) -> CustomizeMessageViewModel.Type {
-//        return CustomizeMessageViewModel.self
-//    }
-//
-//    func indexNavigationBarDidClickVoiceButton() {
-//
-//    }
+    // MARK: - 自定义消息
+    func showCustomizeMessage(with data: [String : Any]?) -> Bool {
+        guard let data = data, let _ = data[MessageTypeKey] else { return false }
+        return true
+    }
+    func setMessageBubbleView(viewModel: CustomizeMessageViewModel) -> YWBaseBubbleChatView? {
+        guard let type = viewModel.messageType, let messageType = CustomizeMessageType(rawValue: type) else { return nil }
+        switch messageType {
+        case .A:
+            return ABubbleChatView(message: viewModel)
+        case .B:
+            return BBubbleChatView(message: viewModel)
+        }
+    }
 }
 
 

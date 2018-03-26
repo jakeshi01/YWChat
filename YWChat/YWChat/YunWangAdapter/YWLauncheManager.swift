@@ -6,6 +6,8 @@
 //  Copyright © 2018年 Jake. All rights reserved.
 //
 
+let MessageTypeKey: String = "messageType"
+
 @objc protocol YWLauncheManagerDelegate {
     
     /// 连接状态改变
@@ -18,10 +20,9 @@
     @objc optional func receive(messages: Array<Any>?, isOffLine: Bool)
     /// 配置客服信息
     @objc optional func fetchProfile(for eServicePerson: YWPerson?) -> YWProfileItem
-    
-    
-    @objc optional func customizeMessage(with type: String) -> CustomizeMessageViewModel.Type
-//    func indexNavigationBarDidClickVoiceButton()
+    /// 自定义类型匹配
+    @objc optional func showCustomizeMessage(with data: [String: Any]?) -> Bool
+    @objc optional func setMessageBubbleView(viewModel: CustomizeMessageViewModel) -> YWBaseBubbleChatView?
 }
 
 
@@ -31,6 +32,7 @@
     private(set) var lastConnectionStatus: YWIMConnectionStatus = .disconnected
     private override init() {}
     
+    var customizeMessageList: [(type: String, viewModelClass: AnyClass, viewClass: YWBaseBubbleChatView.Type)] = [("类型A", BModel.self, YWBaseBubbleChatView.self)]
     var imKit: YWIMKit?
     var delegate: YWLauncheManagerDelegate?
     
@@ -177,7 +179,7 @@ extension YWLauncheManager {
 // MARK: - 聊天相关
 extension YWLauncheManager {
     
-    func getConversationController(with conversationId: String, showCustomMessage: Bool = false) -> YWConversationViewController? {
+    func getConversationController(with conversationId: String?, showCustomMessage: Bool = false) -> YWConversationViewController? {
         guard let imKit = imKit,
             let controller = imKit.makeConversationViewController(withConversationId: conversationId) else { return nil }
         if showCustomMessage {
@@ -186,15 +188,20 @@ extension YWLauncheManager {
         return controller
     }
     
-    func getConversationListController(with navigationController: UINavigationController?) -> YWConversationListViewController? {
-        
+    func getConversationListController() -> YWConversationListViewController? {
         guard let imKit = imKit, let controller = imKit.makeConversationListViewController() else { return nil }
-        controller.didSelectItemBlock = { [weak navigationController] conversation in
-            guard let navigationController = navigationController,
-                let conversationController = imKit.makeConversationViewController(withConversationId: conversation?.conversationId) else { return }
-            navigationController.pushViewController(conversationController, animated: true)
-        }
         return controller
+    }
+    
+    func sendMessage(by conversationId: String, content: String, progressBlock: ((CGFloat, String?) -> Void)?, errorBlock: ((Error?, String?) -> Void)?) {
+        guard let imKit = YWLauncheManager.shared.imKit,
+            let conversation = imKit.imCore.getConversationService().fetchConversation(byConversationId: conversationId) else { return }
+        let body = YWMessageBodyText(messageText: content)
+        conversation.asyncSend(body, progress: { (progress, messageId) in
+            progressBlock?(progress, messageId)
+        }) { (error, messageId) in
+            errorBlock?(error, messageId)
+        }
     }
     
     func sendCustomizeMessage(by conversationId: String, content: String, summary: String) {
@@ -206,23 +213,18 @@ extension YWLauncheManager {
     
     /// 展示自定义消息
     private func showCustomMessageInConversationViewController(_ controller: YWConversationViewController) {
-        controller.setHook4BubbleViewModel { (message) -> YWBaseBubbleViewModel? in
-            guard let message = message, let messageBody = message.messageBody as? YWMessageBodyCustomize else { return nil }
-            guard let contentData = messageBody.content.data(using: String.Encoding.utf8) else { return nil }
-            guard let contentDict = try? JSONSerialization.jsonObject(with: contentData, options: .mutableContainers) as? [String: Any] else { return nil }
-            guard let _ = contentDict?[MessageTypeKey] as? String else { return nil }
-            return CustomizeMessageViewModel(message: message)
-        }
-        controller.setHook4BubbleView { (message) -> YWBaseBubbleChatView? in
-            guard let message = message as? CustomizeMessageViewModel else { return nil }
-            switch message.messageType {
-            case .unknown:
+        controller.setHook4BubbleViewModel { [weak self] (message) -> YWBaseBubbleViewModel? in
+            guard let showCustomizeMessage = self?.delegate?.showCustomizeMessage, let message = message else { return nil }
+            let viewModel = CustomizeMessageViewModel(message: message)
+            if showCustomizeMessage(viewModel.content) {
+                return viewModel
+            } else {
                 return nil
-            case .A:
-                return ABubbleChatView(message: message)
-            case .B:
-                return BBubbleChatView(message: message)
             }
+        }
+        controller.setHook4BubbleView { [weak self] (message) -> YWBaseBubbleChatView? in
+            guard let `self` = self, let viewModel = message as? CustomizeMessageViewModel else { return nil }
+            return self.delegate?.setMessageBubbleView?(viewModel: viewModel)
         }
     }
 

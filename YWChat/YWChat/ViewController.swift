@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(statusChange(notification:)), name: .YWConnectionStatusChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(unReadChange(notification:)), name: .YWUnreadChanged, object: nil)
         title = YunWangAdapter.shared.statusName
-        unReadItem.title = "\(YWLauncheManager.shared.unReadCount)未读"
+        unReadItem.title = "\(YunWangAdapter.shared.unReadCount)未读"
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,11 +38,8 @@ class ViewController: UIViewController {
     
     // MARK: - 聊天相关
     @IBAction func conversationList(_ sender: UIButton) {
-        guard let conversationListController = YWLauncheManager.shared.getConversationListController(with: navigationController) else {
-            print("未初始化")
-            return
-        }
-        navigationController?.pushViewController(conversationListController, animated: true)
+        guard let navigationController = navigationController else { return }
+        YunWangAdapter.shared.pushConversationListController(with: navigationController)
     }
     
     @IBAction func chat(_ sender: UIButton) {
@@ -51,28 +48,20 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendMessage(_ sender: UIButton) {
-        guard let imKit = YWLauncheManager.shared.imKit,
-            let conversation = imKit.imCore.getConversationService().fetchConversation(byConversationId: "iwangxinvisitor695") else { return }
-        let body = YWMessageBodyText(messageText: "你好呀！我要删除")
-        conversation.asyncSend(body, progress: { (progress, messageId) in
-            print("进度:\(progress)")
-        }) { (error, messageId) in
-            if error == nil {
-                print("发送成功")
-            } else {
-                print("发送失败")
-            }
-        }
+        YunWangAdapter.shared.sendMessage(by: "iwangxinvisitor695", content: "发一个普通的消息")
     }
     
     @IBAction func sendCustomizeMessage(_ sender: UIButton) {
-        let content = "{\"\(MessageTypeKey)\":\"\(CustomizeMessageType.B)\",\"content\":\"内容\"}"
-        YWLauncheManager.shared.sendCustomizeMessage(by: "iwangxinvisitor695", content: content, summary: "自定义消息")
+        let a = BModel()
+        a.messageType = CustomizeMessageType.A.rawValue
+        YunWangAdapter.shared.sendCustomizeMessage(by: "iwangxinvisitor695", message: a, summary: "自定义消息A")
     }
     
     // MARK: - 测试
     @IBAction func test(_ sender: UIButton) {
-        
+        let b = BModel()
+        b.messageType = CustomizeMessageType.B.rawValue
+        YunWangAdapter.shared.sendCustomizeMessage(by: "iwangxinvisitor695", message: b, summary: "自定义消息B")
     }
     
     deinit {
