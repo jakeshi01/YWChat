@@ -48,7 +48,7 @@ class YunWangAdapter: NSObject {
 
     func Launching(with appKey: String,  debugPushCertName: String, releasePushCertName: String = "production") {
         manager.delegate = self
-        manager.Launching(with: appKey, debugPushCertName: debugPushCertName, releasePushCertName: releasePushCertName)
+        manager.Launching(with: appKey, debugPushCertName: debugPushCertName, releasePushCertName: releasePushCertName, successBlock: nil, failedBlock: nil)
     }
 }
 

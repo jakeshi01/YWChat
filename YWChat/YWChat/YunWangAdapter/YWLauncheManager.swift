@@ -44,28 +44,45 @@ let MessageTypeKey: String = "messageType"
 
 extension YWLauncheManager {
     
-    func Launching(with appKey: String,  debugPushCertName: String, releasePushCertName: String = "production") {
+    func Launching(with appKey: String,
+                        debugPushCertName: String,
+                        releasePushCertName: String = "production",
+                        successBlock: (() -> Void)?,
+                        failedBlock: ((_ error: YWError?) -> Void)?)
+    {
+        var retryCount: Int = 0
         
-        if Initialization(with: appKey) {
-            #if DEBUG
-                YWAPI.sharedInstance().getGlobalLogService().needCloseDiag = false
-                YWAPI.sharedInstance().getGlobalPushService().setXPushCertName(debugPushCertName)
-            #else
-                YWAPI.sharedInstance().getGlobalLogService().needCloseDiag = true
-                YWAPI.sharedInstance().getGlobalPushService().setXPushCertName(releasePushCertName)
-            #endif
-            YWOCBridge.handleAPNSPush(imKit, description: description)
-            setAvatarStyle()
+        func retryInitialization() {
+            guard retryCount < repeatCount else {
+                failedBlock?(YWError.launcheError)
+                return
+            }
             
-            listenConnectionStatus()
-            listenUnreadChanged()
-            listenOnClickUrl()
-            listenNewMessage()
-            setAudioCategory()
-            setEServiceProfile()
-        } else {
-            print("初始化失败")
+            if Initialization(with: appKey) {
+                #if DEBUG
+                    YWAPI.sharedInstance().getGlobalLogService().needCloseDiag = false
+                    YWAPI.sharedInstance().getGlobalPushService().setXPushCertName(debugPushCertName)
+                #else
+                    YWAPI.sharedInstance().getGlobalLogService().needCloseDiag = true
+                    YWAPI.sharedInstance().getGlobalPushService().setXPushCertName(releasePushCertName)
+                #endif
+                YWOCBridge.handleAPNSPush(imKit, description: description)
+                setAvatarStyle()
+                
+                listenConnectionStatus()
+                listenUnreadChanged()
+                listenOnClickUrl()
+                listenNewMessage()
+                setAudioCategory()
+                setEServiceProfile()
+                successBlock?()
+            } else {
+                retryCount += 1
+                retryInitialization()
+            }
         }
+        
+        retryInitialization()
     }
 }
 
