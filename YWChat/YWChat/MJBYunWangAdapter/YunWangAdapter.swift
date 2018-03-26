@@ -14,14 +14,17 @@ extension Notification.Name {
 class YunWangAdapter: NSObject {
     
     public static let shared = YunWangAdapter.init()
-    let manager = YWLauncheManager.shared
+    private override init() {}
+    let launcheManager = YWLauncheManager.shared
+    let loginManager = YWLoginManager.shared
+    let conversationManager = YWConversationManager.shared
     
     // MARK: - 常用属性值
     var connectionStatus: YWIMConnectionStatus {
-        return manager.lastConnectionStatus
+        return launcheManager.lastConnectionStatus
     }
     var unReadCount: Int {
-        return manager.unReadCount
+        return launcheManager.unReadCount
     }
     var statusName: String {
         switch connectionStatus {
@@ -47,8 +50,9 @@ class YunWangAdapter: NSObject {
     }
 
     func Launching(with appKey: String,  debugPushCertName: String, releasePushCertName: String = "production") {
-        manager.delegate = self
-        manager.Launching(with: appKey, debugPushCertName: debugPushCertName, releasePushCertName: releasePushCertName, successBlock: nil, failedBlock: nil)
+        launcheManager.delegate = self
+        conversationManager.delegate = self
+        launcheManager.Launching(with: appKey, debugPushCertName: debugPushCertName, releasePushCertName: releasePushCertName, successBlock: nil, failedBlock: nil)
     }
 }
 
@@ -56,15 +60,15 @@ class YunWangAdapter: NSObject {
 extension YunWangAdapter {
     
     func login(with userId: String, password: String) {
-        manager.login(with: userId, password: password, successBlock: {
-            print("内部处理")
+        loginManager.login(with: launcheManager.imKit, userId: userId, password: password, successBlock: {
+            print("登录成功")
         }) { (error) in
-            print("内部处理")
+            print("登录失败")
         }
     }
     
     func logout() {
-        manager.logout()
+        loginManager.logout(with: launcheManager.imKit)
     }
 }
 
@@ -72,18 +76,22 @@ extension YunWangAdapter {
 // MARK: - 聊天相关
 extension YunWangAdapter {
     
+    func getConversationController(conversationId: String?, showCustomMessage: Bool = true) -> YWConversationViewController? {
+        return conversationManager.getConversationController(with: launcheManager.imKit, conversationId: conversationId, showCustomMessage: showCustomMessage)
+    }
+
     func pushConversationListController(with navigationController: UINavigationController) {
-        guard let controller = manager.getConversationListController() else { return }
+        guard let controller = conversationManager.getConversationListController(with: launcheManager.imKit) else { return }
         controller.didSelectItemBlock = { [weak self] conversation in
             guard let `self` = self,
-                let conversationController = self.manager.getConversationController(with: conversation?.conversationId) else { return }
+                let conversationController = self.conversationManager.getConversationController(with: self.launcheManager.imKit, conversationId: conversation?.conversationId) else { return }
             navigationController.pushViewController(conversationController, animated: true)
         }
         navigationController.pushViewController(controller, animated: true)
     }
-    
+
     func sendMessage(by conversationId: String, content: String) {
-        manager.sendMessage(by: conversationId, content: content, progressBlock: { (progress, messageId) in
+        conversationManager.sendMessage(with: launcheManager.imKit, conversationId: conversationId, content: content, progressBlock: { (progress, messageId) in
             print("进度:\(progress)")
         }) { (error, messageId) in
             if error == nil {
@@ -93,14 +101,14 @@ extension YunWangAdapter {
             }
         }
     }
-    
+
     func sendCustomizeMessage(by conversationId: String, message: BaseMessageModel, summary: String) {
         guard let content = message.toJSONString() else { return }
-        manager.sendCustomizeMessage(by: conversationId, content: content, summary: summary)
+        conversationManager.sendCustomizeMessage(with: launcheManager.imKit, conversationId: conversationId, content: content, summary: summary)
     }
 }
 
-// MARK: - 自定义处理
+// MARK: - 自定义配置处理
 extension YunWangAdapter: YWLauncheManagerDelegate {
 
     func connectionStatusChanged(status: YWIMConnectionStatus, error: Error?) {
@@ -143,7 +151,10 @@ extension YunWangAdapter: YWLauncheManagerDelegate {
         item.avatar = #imageLiteral(resourceName: "meijiabang_icon")
         return item
     }
-    
+}
+
+// MARK: - 自定义消息处理
+extension YunWangAdapter: YWConversationManagerDelegate {
     // MARK: - 自定义消息
     func showCustomizeMessage(with data: [String : Any]?) -> Bool {
         guard let data = data, let _ = data[MessageTypeKey] else { return false }
@@ -159,5 +170,3 @@ extension YunWangAdapter: YWLauncheManagerDelegate {
         }
     }
 }
-
-

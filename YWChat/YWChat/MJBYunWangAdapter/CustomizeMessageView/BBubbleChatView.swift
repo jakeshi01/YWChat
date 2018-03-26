@@ -19,7 +19,7 @@ class BBubbleChatView: YWBaseBubbleChatView {
         self.message = message
         
         label.backgroundColor = .red
-//        label.text = "我是\(message.messageType)消息：\(message.content?["content"] ?? "")"
+        label.text = "我是\(message.messageType ?? ""))"
         addSubview(label)
     }
     

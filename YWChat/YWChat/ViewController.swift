@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func chat(_ sender: UIButton) {
-        guard let conversationController = YWLauncheManager.shared.getConversationController(with: "iwangxinvisitor695", showCustomMessage: true) else { return }
+        guard let conversationController = YunWangAdapter.shared.getConversationController(conversationId: "iwangxinvisitor695") else { return }
         navigationController?.pushViewController(conversationController, animated: true)
     }
     

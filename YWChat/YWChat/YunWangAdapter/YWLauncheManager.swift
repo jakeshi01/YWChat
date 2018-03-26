@@ -20,9 +20,6 @@ let MessageTypeKey: String = "messageType"
     @objc optional func receive(messages: Array<Any>?, isOffLine: Bool)
     /// 配置客服信息
     @objc optional func fetchProfile(for eServicePerson: YWPerson?) -> YWProfileItem
-    /// 自定义类型匹配
-    @objc optional func showCustomizeMessage(with data: [String: Any]?) -> Bool
-    @objc optional func setMessageBubbleView(viewModel: CustomizeMessageViewModel) -> YWBaseBubbleChatView?
 }
 
 
@@ -168,82 +165,3 @@ private extension YWLauncheManager {
     }
 
 }
-
-// MARK: - 登录相关
-extension YWLauncheManager {
-
-    func login(with userId: String, password: String, successBlock: (() -> Void)?, failedBlock: ((_ error: Error?) -> Void)?) {
-        
-        guard let imKit = imKit else {
-            failedBlock?(nil)
-            return
-        }
-        YWOCBridge.login(with: imKit, userId: userId, password: password, successBlock: {
-            successBlock?()
-        }) { (error) in
-            failedBlock?(error)
-        }
-    }
-    
-    func logout() {
-        
-        guard let imKit = imKit else { return }
-        imKit.imCore.getLoginService().asyncLogout(completionBlock: nil)
-    }
-
-}
-
-// MARK: - 聊天相关
-extension YWLauncheManager {
-    
-    func getConversationController(with conversationId: String?, showCustomMessage: Bool = false) -> YWConversationViewController? {
-        guard let imKit = imKit,
-            let controller = imKit.makeConversationViewController(withConversationId: conversationId) else { return nil }
-        if showCustomMessage {
-            showCustomMessageInConversationViewController(controller)
-        }
-        return controller
-    }
-    
-    func getConversationListController() -> YWConversationListViewController? {
-        guard let imKit = imKit, let controller = imKit.makeConversationListViewController() else { return nil }
-        return controller
-    }
-    
-    func sendMessage(by conversationId: String, content: String, progressBlock: ((CGFloat, String?) -> Void)?, errorBlock: ((Error?, String?) -> Void)?) {
-        guard let imKit = YWLauncheManager.shared.imKit,
-            let conversation = imKit.imCore.getConversationService().fetchConversation(byConversationId: conversationId) else { return }
-        let body = YWMessageBodyText(messageText: content)
-        conversation.asyncSend(body, progress: { (progress, messageId) in
-            progressBlock?(progress, messageId)
-        }) { (error, messageId) in
-            errorBlock?(error, messageId)
-        }
-    }
-    
-    func sendCustomizeMessage(by conversationId: String, content: String, summary: String) {
-        guard let imKit = YWLauncheManager.shared.imKit,
-            let conversation = imKit.imCore.getConversationService().fetchConversation(byConversationId: conversationId) else { return }
-        let customizeBody = YWMessageBodyCustomize(messageCustomizeContent: content, summary: summary)
-        conversation.asyncSend(customizeBody, progress: nil, completion: nil)
-    }
-    
-    /// 展示自定义消息
-    private func showCustomMessageInConversationViewController(_ controller: YWConversationViewController) {
-        controller.setHook4BubbleViewModel { [weak self] (message) -> YWBaseBubbleViewModel? in
-            guard let showCustomizeMessage = self?.delegate?.showCustomizeMessage, let message = message else { return nil }
-            let viewModel = CustomizeMessageViewModel(message: message)
-            if showCustomizeMessage(viewModel.content) {
-                return viewModel
-            } else {
-                return nil
-            }
-        }
-        controller.setHook4BubbleView { [weak self] (message) -> YWBaseBubbleChatView? in
-            guard let `self` = self, let viewModel = message as? CustomizeMessageViewModel else { return nil }
-            return self.delegate?.setMessageBubbleView?(viewModel: viewModel)
-        }
-    }
-
-}
-
