@@ -26,8 +26,10 @@ class YWConversationManager: NSObject {
     var delegate: YWConversationManagerDelegate?
     
     func getConversationController(with imKit: YWIMKit?, conversationId: String?, showCustomMessage: Bool = true) -> YWConversationViewController? {
+       
         guard let imKit = imKit,
-            let controller = imKit.makeConversationViewController(withConversationId: conversationId) else { return nil }
+            let conversation = YWP2PConversation.fetchConversation(byConversationId: conversationId, creatIfNotExist: true, baseContext: imKit.imCore),
+            let controller = imKit.makeConversationViewController(withConversationId: conversation.conversationId) else { return nil }
         if showCustomMessage {
             showCustomMessageInConversationViewController(controller)
         }

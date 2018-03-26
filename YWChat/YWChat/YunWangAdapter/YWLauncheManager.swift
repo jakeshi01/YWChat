@@ -29,7 +29,6 @@ let MessageTypeKey: String = "messageType"
     private(set) var lastConnectionStatus: YWIMConnectionStatus = .disconnected
     private override init() {}
     
-    var customizeMessageList: [(type: String, viewModelClass: AnyClass, viewClass: YWBaseBubbleChatView.Type)] = [("类型A", BModel.self, YWBaseBubbleChatView.self)]
     var imKit: YWIMKit?
     var delegate: YWLauncheManagerDelegate?
     
@@ -80,6 +79,15 @@ extension YWLauncheManager {
         }
         
         retryInitialization()
+    }
+}
+
+extension YWLauncheManager {
+    
+    func conversationUnread(by conversationId: String) -> Int {
+        guard let imKit = imKit,
+            let conversation = imKit.imCore.getConversationService().fetchConversation(byConversationId: conversationId) else { return 0 }
+        return conversation.conversationUnreadMessagesCount.intValue
     }
 }
 

@@ -108,6 +108,14 @@ extension YunWangAdapter {
     }
 }
 
+// MARK: - 方法
+extension YunWangAdapter {
+    
+    func conversationUnread(by conversationId: String) -> Int {
+        return launcheManager.conversationUnread(by: conversationId)
+    }
+}
+
 // MARK: - 自定义配置处理
 extension YunWangAdapter: YWLauncheManagerDelegate {
 

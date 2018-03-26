@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func chat(_ sender: UIButton) {
-        guard let conversationController = YunWangAdapter.shared.getConversationController(conversationId: "iwangxinvisitor695") else { return }
+        guard let conversationController = YunWangAdapter.shared.getConversationController(conversationId: "iwangxinvisitor696") else { return }
         navigationController?.pushViewController(conversationController, animated: true)
     }
     
@@ -62,6 +62,8 @@ class ViewController: UIViewController {
         let b = BModel()
         b.messageType = CustomizeMessageType.B.rawValue
         YunWangAdapter.shared.sendCustomizeMessage(by: "iwangxinvisitor695", message: b, summary: "自定义消息B")
+        
+    
     }
     
     deinit {
