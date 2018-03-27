@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(unReadChange(notification:)), name: .YWUnreadChanged, object: nil)
         title = YWChat.shared.statusName
         unReadItem.title = "\(YWChat.shared.unReadCount)未读"
+        YWChat.shared.listenReceiveMessage(delegete: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,17 +66,19 @@ class ViewController: UIViewController {
     
     // MARK: - 测试
     @IBAction func test(_ sender: UIButton) {
-//        let b = BModel()
-//        b.messageType = CustomizeMessageType.B.rawValue
-//        YunWangAdapter.shared.sendCustomizeMessage(by: "iwangxinvisitor695", message: b, summary: "自定义消息B")
-        
-    
+        YWChat.shared.removeListen(delegete: self)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
 
+}
+
+extension ViewController: ReceiveMessageDelegate {
+    func receiveMessage(message: IYWMessage) {
+        print("接收信息")
+    }
 }
 
 extension ViewController {

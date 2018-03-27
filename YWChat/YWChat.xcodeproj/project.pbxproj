@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		35A0B5BA204FCBDC0060DA2E /* CustomizeMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0B5B9204FCBDC0060DA2E /* CustomizeMessageViewModel.swift */; };
 		35D2825D2068F385009C298D /* YWConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D2825C2068F385009C298D /* YWConversationManager.swift */; };
 		AA9B9FDD2045066900133A54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9FDC2045066900133A54 /* AppDelegate.swift */; };
 		AA9B9FDF2045066900133A54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9FDE2045066900133A54 /* ViewController.swift */; };
@@ -57,7 +56,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		35A0B5B9204FCBDC0060DA2E /* CustomizeMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeMessageViewModel.swift; sourceTree = "<group>"; };
 		35D2825C2068F385009C298D /* YWConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWConversationManager.swift; sourceTree = "<group>"; };
 		52F7EF0BD7361A796EB00AEC /* Pods-YWChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YWChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YWChat/Pods-YWChat.debug.xcconfig"; sourceTree = "<group>"; };
 		AA9B9FD92045066900133A54 /* YWChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YWChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,25 +169,8 @@
 				AA9BA02E2047DA9200133A54 /* YWLauncheManager.swift */,
 				AAB3053D2068E59500B9EBAA /* YWLoginManager.swift */,
 				35D2825C2068F385009C298D /* YWConversationManager.swift */,
-				35A0B5AD204FC0B60060DA2E /* CustomizeMessage */,
 			);
 			path = YunWangAdapter;
-			sourceTree = "<group>";
-		};
-		35A0B5AD204FC0B60060DA2E /* CustomizeMessage */ = {
-			isa = PBXGroup;
-			children = (
-				35D2825A2068CD62009C298D /* ViewModel */,
-			);
-			path = CustomizeMessage;
-			sourceTree = "<group>";
-		};
-		35D2825A2068CD62009C298D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				35A0B5B9204FCBDC0060DA2E /* CustomizeMessageViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AA9B9FD02045066900133A54 = {
@@ -474,7 +455,6 @@
 				AA9B9FDF2045066900133A54 /* ViewController.swift in Sources */,
 				AA9BA0372047EC8000133A54 /* YWOCBridge.m in Sources */,
 				35D2825D2068F385009C298D /* YWConversationManager.swift in Sources */,
-				35A0B5BA204FCBDC0060DA2E /* CustomizeMessageViewModel.swift in Sources */,
 				AAB305402069DFF600B9EBAA /* YWChat.swift in Sources */,
 				AA9B9FDD2045066900133A54 /* AppDelegate.swift in Sources */,
 				AA9BA02F2047DA9200133A54 /* YWLauncheManager.swift in Sources */,

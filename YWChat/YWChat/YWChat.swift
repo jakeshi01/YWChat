@@ -13,6 +13,10 @@ extension Notification.Name {
     static let YWUnreadChanged = Notification.Name(rawValue: "YWUnreadChanged")
 }
 
+protocol ReceiveMessageDelegate: NSObjectProtocol {
+    func receiveMessage(message: IYWMessage)
+}
+
 class YWChat: NSObject {
     
     public static let shared = YWChat.init()
@@ -20,7 +24,7 @@ class YWChat: NSObject {
     
     private let launcheManager = YWLauncheManager.shared
     private let conversationManager = YWConversationManager.shared
-    
+    private var receiveMessageDelegateList = NSMutableArray()
     
     // MARK: - 常用属性值
     var connectionStatus: YWIMConnectionStatus {
@@ -146,6 +150,26 @@ extension YWChat {
     func conversationUnread(by conversationId: String) -> Int {
         return launcheManager.conversationUnread(by: conversationId)
     }
+
+}
+
+// MARK: - 消息监听
+extension YWChat {
+    
+    /// 监听接受消息，默认监听所有，可传conversationId限定监听范围
+    open func listenReceiveMessage(delegete: ReceiveMessageDelegate) {
+        receiveMessageDelegateList.add(delegete)
+    }
+    
+    open func removeListen(delegete: ReceiveMessageDelegate) {
+        receiveMessageDelegateList.remove(delegete)
+    }
+    
+    private func distributeReceiveMessage(message: IYWMessage) {
+        for delegate in receiveMessageDelegateList {
+            (delegate as? ReceiveMessageDelegate)?.receiveMessage(message: message)
+        }
+    }
 }
 
 // MARK: - 自定义配置处理
@@ -179,7 +203,7 @@ extension YWChat: YWLauncheManagerDelegate {
                 print("在线消息")
             }
             if let message = message as? IYWMessage {
-                print(message.messageId)
+                distributeReceiveMessage(message: message)
             }
         })
     }
