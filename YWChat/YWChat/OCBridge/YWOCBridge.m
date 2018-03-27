@@ -110,11 +110,6 @@
     }];
 }
 
-+ (void) setConversationViewControllerViewWillApearBlock: (YWConversationViewController *)conversationViewController viewWillAppearBlock: (YWViewWillAppearBlock)block {
-    
-    [conversationViewController setViewWillAppearBlock: block];
-}
-
 @end
 
 

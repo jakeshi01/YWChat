@@ -91,9 +91,9 @@ extension YWChat {
 extension YWChat {
     
     //获取会话列表
-    func getConversationListController(type: ConversationType) -> YWConversationListViewController? {
+    func getConversationListController(type: ConversationType, didSelectedConversationBlock: ((_  conversation: YWConversation?) -> Void)? = nil) -> YWConversationListViewController? {
         
-        return conversationManager.getConversationListController(with: launcheManager.imKit, type: type)
+        return conversationManager.getConversationListController(with: launcheManager.imKit, type: type, didSelectedConversationBlock: didSelectedConversationBlock)
         
     }
     

@@ -35,7 +35,7 @@ class YWConversationManager: NSObject {
 extension YWConversationManager {
     
     //获取会话列表
-    func getConversationListController(with imKit: YWIMKit?, type: ConversationType) -> YWConversationListViewController? {
+    func getConversationListController(with imKit: YWIMKit?, type: ConversationType, didSelectedConversationBlock: ((_  conversation: YWConversation?) -> Void)?) -> YWConversationListViewController? {
         
         guard let imKit = imKit, let controller = imKit.makeConversationListViewController() else { return nil }
         
@@ -59,15 +59,24 @@ extension YWConversationManager {
             }
         }
         
+        controller.didSelectItemBlock = { [weak self] conversation in
+            guard let `self` = self,
+                  let conversation = conversation,
+                  let navc = controller.navigationController
+            else { return }
+            didSelectedConversationBlock?(conversation)
+            self.pushConversationController(in: navc, imKit: YWLauncheManager.shared.imKit, conversation: conversation, showCustomMessage: true)
+        }
+        
         return controller
     }
     
     
     //根据会话id获取对应会话
     @discardableResult
-    func pushConversationController(in navgationController: UINavigationController, imKit: YWIMKit?, conversation: YWConversation, showCustomMessage: Bool) -> YWConversationViewController? {
+    func pushConversationController(in navigationController: UINavigationController, imKit: YWIMKit?, conversation: YWConversation, showCustomMessage: Bool) -> YWConversationViewController? {
         
-        let conversationViewController: YWConversationViewController? = navgationController.viewControllers.filter { controller -> Bool in
+        let conversationViewController: YWConversationViewController? = navigationController.viewControllers.filter { controller -> Bool in
             
             if controller.isKind(of: YWConversationViewController.self) {
                 return (controller as! YWConversationViewController).conversation.conversationId == conversation.conversationId
@@ -78,8 +87,8 @@ extension YWConversationManager {
         
         if let existConversationViewController = conversationViewController {
             
-            navgationController.popToViewController(existConversationViewController, animated: true)
-            navgationController.setNavigationBarHidden(false, animated: false)
+            navigationController.popToViewController(existConversationViewController, animated: true)
+            navigationController.setNavigationBarHidden(false, animated: false)
             
             return existConversationViewController
             
@@ -97,15 +106,11 @@ extension YWConversationManager {
             
             guard let newConversationViewController = imKit?.makeConversationViewController(withConversationId: realConversation.conversationId) else { return nil }
             
-            YWOCBridge.setConversationViewControllerViewWillApearBlock(newConversationViewController, viewWillAppear: { [weak self] animate in
-                guard let `self` = self else { return }
-                navgationController.setNavigationBarHidden(false, animated: animate)
-                navgationController.pushViewController(newConversationViewController, animated: true)
-                if showCustomMessage {
-                    self.showCustomMessageInConversationViewController(newConversationViewController)
-                }
-            })
-            
+            navigationController.setNavigationBarHidden(false, animated: false)
+            navigationController.pushViewController(newConversationViewController, animated: true)
+            if showCustomMessage {
+                self.showCustomMessageInConversationViewController(newConversationViewController)
+            }
             return newConversationViewController
         }
         
