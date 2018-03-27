@@ -81,6 +81,10 @@ extension YWChat {
         
     }
     
+    func logout() {
+        YWLoginManager.shared.logout(with: launcheManager.imKit)
+    }
+    
 }
 
 // MARK: - 聊天相关
@@ -126,9 +130,13 @@ extension YWChat {
         }
     }
     
-    func sendCustomizeMessage(by conversationId: String, message: BaseMessageModel, summary: String) {
-        guard let content = message.toJSONString() else { return }
-        conversationManager.sendCustomizeMessage(with: launcheManager.imKit, conversationId: conversationId, content: content, summary: summary)
+    func sendCustomizeMessage(by conversationId: String, message: [String: Any], summary: String) {
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: message, options: JSONSerialization.WritingOptions.init(rawValue: 0))
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                conversationManager.sendCustomizeMessage(with: launcheManager.imKit, conversationId: conversationId, content: JSONString, summary: summary)
+            }
+        } catch { }
     }
 }
 
@@ -187,19 +195,14 @@ extension YWChat: YWLauncheManagerDelegate {
 
 // MARK: - 自定义消息处理
 extension YWChat: YWConversationManagerDelegate {
+    
     // MARK: - 自定义消息
-    func showCustomizeMessage(with data: [String : Any]?) -> Bool {
-        guard let data = data, let _ = data[MessageTypeKey] else { return false }
-        return true
+    func setBubbleViewModel(message: IYWMessage?) -> YWBaseBubbleViewModel? {
+        return nil
     }
-    func setMessageBubbleView(viewModel: CustomizeMessageViewModel) -> YWBaseBubbleChatView? {
-        guard let type = viewModel.messageType, let messageType = CustomizeMessageType(rawValue: type) else { return nil }
-        switch messageType {
-        case .A:
-            return ABubbleChatView(message: viewModel)
-        case .B:
-            return BBubbleChatView(message: viewModel)
-        }
+    
+    func setMessageBubbleView(message: YWBaseBubbleViewModel?) -> YWBaseBubbleChatView? {
+        return nil
     }
 }
 

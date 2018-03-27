@@ -10,8 +10,8 @@ import Foundation
 
 protocol YWConversationManagerDelegate {
 
-    func showCustomizeMessage(with data: [String: Any]?) -> Bool
-    func setMessageBubbleView(viewModel: CustomizeMessageViewModel) -> YWBaseBubbleChatView?
+    func setBubbleViewModel(message: IYWMessage?) -> YWBaseBubbleViewModel?
+    func setMessageBubbleView(message: YWBaseBubbleViewModel?) -> YWBaseBubbleChatView?
 }
 
 enum ConversationType: Int {
@@ -176,17 +176,12 @@ extension YWConversationManager {
     /// 展示自定义消息
     private func showCustomMessageInConversationViewController(_ controller: YWConversationViewController) {
         controller.setHook4BubbleViewModel { [weak self] (message) -> YWBaseBubbleViewModel? in
-            guard let showCustomizeMessage = self?.delegate?.showCustomizeMessage, let message = message else { return nil }
-            let viewModel = CustomizeMessageViewModel(message: message)
-            if showCustomizeMessage(viewModel.content) {
-                return viewModel
-            } else {
-                return nil
-            }
+            guard let `self` = self, let setBubbleViewModel = self.delegate?.setBubbleViewModel else { return nil }
+            return setBubbleViewModel(message)
         }
         controller.setHook4BubbleView { [weak self] (message) -> YWBaseBubbleChatView? in
-            guard let `self` = self, let viewModel = message as? CustomizeMessageViewModel else { return nil }
-            return self.delegate?.setMessageBubbleView(viewModel: viewModel)
+            guard let `self` = self, let setMessageBubbleView = self.delegate?.setMessageBubbleView else { return nil }
+            return setMessageBubbleView(message)
         }
     }
     
