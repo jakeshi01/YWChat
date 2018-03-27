@@ -39,12 +39,12 @@ class ViewController: UIViewController {
     // MARK: - 聊天相关
     @IBAction func conversationList(_ sender: UIButton) {
         guard let navigationController = navigationController else { return }
-        YunWangAdapter.shared.pushConversationListController(with: navigationController)
+//        YunWangAdapter.shared.pushConversationListController(with: navigationController)
     }
     
     @IBAction func chat(_ sender: UIButton) {
-        guard let conversationController = YunWangAdapter.shared.getConversationController(conversationId: "iwangxinvisitor696") else { return }
-        navigationController?.pushViewController(conversationController, animated: true)
+//        guard let conversationController = YunWangAdapter.shared.getConversationController(conversationId: "iwangxinvisitor696") else { return }
+//        navigationController?.pushViewController(conversationController, animated: true)
     }
     
     @IBAction func sendMessage(_ sender: UIButton) {

@@ -42,7 +42,7 @@ extension YWLauncheManager {
     
     func Launching(with appKey: String,
                         debugPushCertName: String,
-                        releasePushCertName: String = "production",
+                        releasePushCertName: String,
                         successBlock: (() -> Void)?,
                         failedBlock: ((_ error: YWError?) -> Void)?)
     {

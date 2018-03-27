@@ -18,4 +18,6 @@
 
 + (void)loginWithImKit:(YWIMKit *)imKit UserId:(NSString *)userId Password:(NSString *)password SuccessBlock:(void(^)(void))successBlock FailedBlock:(void (^)(NSError *))failedBlock;
 
++ (void) setConversationViewControllerViewWillApearBlock: (YWConversationViewController *)conversationViewController viewWillAppearBlock: (YWViewWillAppearBlock)block;
+
 @end
