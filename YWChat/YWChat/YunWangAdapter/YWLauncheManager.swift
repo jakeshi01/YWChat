@@ -26,11 +26,11 @@ let MessageTypeKey: String = "messageType"
 @objc class YWLauncheManager: NSObject {
     
     public static let shared = YWLauncheManager.init()
-    private(set) var lastConnectionStatus: YWIMConnectionStatus = .disconnected
     private override init() {}
     
     var imKit: YWIMKit?
     var delegate: YWLauncheManagerDelegate?
+    private(set) var lastConnectionStatus: YWIMConnectionStatus = .disconnected
     
     var unReadCount: Int {
         guard let imKit = imKit else { return 0 }
@@ -49,7 +49,7 @@ extension YWLauncheManager {
         var retryCount: Int = 0
         
         func retryInitialization() {
-            guard retryCount < repeatCount else {
+            guard retryCount < RepeatCount else {
                 failedBlock?(YWError.launcheError)
                 return
             }

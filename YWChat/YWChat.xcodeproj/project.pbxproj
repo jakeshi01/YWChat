@@ -35,6 +35,8 @@
 		AA9BA0372047EC8000133A54 /* YWOCBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9BA0362047EC8000133A54 /* YWOCBridge.m */; };
 		AAB3053E2068E59500B9EBAA /* YWLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3053D2068E59500B9EBAA /* YWLoginManager.swift */; };
 		AAB305402069DFF600B9EBAA /* YWChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB3053F2069DFF600B9EBAA /* YWChat.swift */; };
+		AAB30556206CCC1B00B9EBAA /* YWContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB30555206CCC1B00B9EBAA /* YWContactManager.swift */; };
+		AAB30558206CD66E00B9EBAA /* YWTribeServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB30557206CD66E00B9EBAA /* YWTribeServiceManager.swift */; };
 		BE06327DD3A6C4121AF46ABA /* Pods_YWChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83EEB50558B07A47C820582 /* Pods_YWChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +95,8 @@
 		AA9BA0362047EC8000133A54 /* YWOCBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWOCBridge.m; sourceTree = "<group>"; };
 		AAB3053D2068E59500B9EBAA /* YWLoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YWLoginManager.swift; sourceTree = "<group>"; };
 		AAB3053F2069DFF600B9EBAA /* YWChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWChat.swift; sourceTree = "<group>"; };
+		AAB30555206CCC1B00B9EBAA /* YWContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWContactManager.swift; sourceTree = "<group>"; };
+		AAB30557206CD66E00B9EBAA /* YWTribeServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YWTribeServiceManager.swift; sourceTree = "<group>"; };
 		C83EEB50558B07A47C820582 /* Pods_YWChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YWChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E97130203E404EA9521966 /* Pods-YWChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YWChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-YWChat/Pods-YWChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +173,8 @@
 				AA9BA02E2047DA9200133A54 /* YWLauncheManager.swift */,
 				AAB3053D2068E59500B9EBAA /* YWLoginManager.swift */,
 				35D2825C2068F385009C298D /* YWConversationManager.swift */,
+				AAB30555206CCC1B00B9EBAA /* YWContactManager.swift */,
+				AAB30557206CD66E00B9EBAA /* YWTribeServiceManager.swift */,
 			);
 			path = YunWangAdapter;
 			sourceTree = "<group>";
@@ -452,10 +458,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB30556206CCC1B00B9EBAA /* YWContactManager.swift in Sources */,
 				AA9B9FDF2045066900133A54 /* ViewController.swift in Sources */,
 				AA9BA0372047EC8000133A54 /* YWOCBridge.m in Sources */,
 				35D2825D2068F385009C298D /* YWConversationManager.swift in Sources */,
 				AAB305402069DFF600B9EBAA /* YWChat.swift in Sources */,
+				AAB30558206CD66E00B9EBAA /* YWTribeServiceManager.swift in Sources */,
 				AA9B9FDD2045066900133A54 /* AppDelegate.swift in Sources */,
 				AA9BA02F2047DA9200133A54 /* YWLauncheManager.swift in Sources */,
 				AAB3053E2068E59500B9EBAA /* YWLoginManager.swift in Sources */,

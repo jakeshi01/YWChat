@@ -10,7 +10,8 @@ import Foundation
 
 let YWUidKey: String = "YW_uid"
 let YWPasswordKey: String = "YW_password"
-let repeatCount: Int = 3   //失败重试次数
+let RepeatCount: Int = 3   //失败重试次数
+let MessageLimit: UInt = 15  //单页加载聊天消息数
 
 enum YWError: Int, Swift.Error, LocalizedError {
     case launcheError = 60001
@@ -33,6 +34,16 @@ class YWLoginManager: NSObject {
     //设置单例
     public static let shared = YWLoginManager.init()
     private override init() {}
+    
+    //登录状态查询
+    var isLogined: Bool {
+        get{
+            guard let imKit = YWLauncheManager.shared.imKit else {
+                return false
+            }
+            return imKit.imCore.getLoginService().isCurrentLogined
+        }
+    }
     
     private(set) var ywUid: String? {
         set {
@@ -72,7 +83,7 @@ extension YWLoginManager {
         }
         var retryCount: Int = 0
         func retryLogin() {
-            guard retryCount < repeatCount else {
+            guard retryCount < RepeatCount else {
                 failedBlock?(YWError.loginFailure)
                 return
             }
