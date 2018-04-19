@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YWChat'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'pod for YWIM'
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/jakeshi01/YWChat'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'jakeshi01' => '18922189211@189.cn' }
-  s.source           = { :git => 'https://github.com/jakeshi01/YWChat.g
+  s.source           = { :git => 'https://github.com/jakeshi01/YWChat.git' }
 
   s.ios.deployment_target = '9.0'
 
