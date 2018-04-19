@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YWChat'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'pod for YWIM'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = ['Class/***/**','Classes/*']
+  s.source_files = ['Class/***/**','Class/*']
 
   s.frameworks   = [
     'UIKit'
