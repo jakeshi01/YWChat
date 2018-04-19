@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YWChat'
-  s.version          = '1.0'
+  s.version          = '1.0.1'
   s.summary          = 'pod for YWIM'
 
 # This description is used to generate tags and improve search results.
@@ -30,23 +30,9 @@ TODO: Add long description of the pod here.
 
   s.source_files = ['Class/***/**','Classes/*']
 
-  s.requires_arc = true
-
   s.frameworks   = [
-    'UIKit',
-    'AddressBook',
-    'SystemConfiguration',
-    'CoreLocation',
-    'CoreTelephony',
-    'CoreData',
-    'MobileCoreServices',
-    'ImageIO',
-    'AudioToolbox',
-    'AVFoundation',
-    'AssetsLibrary',
-    'CoreMotion'
+    'UIKit'
   ]
-  s.libraries = ['stdc++.6.0.9', 'z', 'sqlite3.0', 'resolv']
   
   s.dependency 'YunWangOpenIM', '3.8.2'
 
