@@ -30,10 +30,31 @@ TODO: Add long description of the pod here.
 
   s.source_files = ['Class/***/**','Class/*']
 
+  s.requires_arc = true
+
   s.frameworks   = [
-    'UIKit'
+    'UIKit',
+    'AddressBook',
+    'SystemConfiguration',
+    'CoreLocation',
+    'CoreTelephony',
+    'CoreData',
+    'MobileCoreServices',
+    'ImageIO',
+    'AudioToolbox',
+    'AVFoundation',
+    'AssetsLibrary',
+    'CoreMotion'
   ]
+  s.libraries = ['stdc++.6.0.9', 'z', 'sqlite3.0', 'resolv']
+  s.resources = ['wx/WXFrameworks/yw_1222.jpg', 'wx/WXFrameworks/WXOpenIMSDKResource.bundle', 'wx/WXFrameworks/WXOUIModuleResources.bundle']
+  s.compiler_flags = '-ObjC'
   
-  s.dependency 'YunWangOpenIM', '3.8.2'
+   s.vendored_frameworks = [
+    'wx/WXFrameworks/WXOUIModule.framework',
+    'wx/WXFrameworks/WXOpenIMTribeKit.framework',
+    'wx/WXFrameworks/WXOpenIMSDKFMWK.framework'
+  ]
+
 
 end
