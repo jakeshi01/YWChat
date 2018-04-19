@@ -13,7 +13,7 @@ extension Notification.Name {
     static let YWUnreadChanged = Notification.Name(rawValue: "YWUnreadChanged")
 }
 
-protocol ReceiveMessageDelegate: NSObjectProtocol {
+protocol ReceiveMessageDelegate: class {
     func receiveMessage(message: IYWMessage)
 }
 
@@ -57,7 +57,7 @@ class YWChat: NSObject {
             return "重连成功"
         }
     }
-
+    
 }
 
 // MARK: - 初始化、登录相关
@@ -80,9 +80,7 @@ extension YWChat {
                successBlock: (() -> Void)?,
                failedBlock: ((_ error: YWError?) -> Void)?)
     {
-        
         YWLoginManager.shared.login(with: launcheManager.imKit, userId: userId, password: password, successBlock: successBlock, failedBlock: failedBlock)
-        
     }
     
     func logout() {
@@ -142,6 +140,7 @@ extension YWChat {
             }
         } catch { }
     }
+    
 }
 
 // MARK: - 方法
@@ -150,7 +149,7 @@ extension YWChat {
     func conversationUnread(by conversationId: String) -> Int {
         return launcheManager.conversationUnread(by: conversationId)
     }
-
+    
 }
 
 // MARK: - 消息监听
@@ -170,6 +169,7 @@ extension YWChat {
             (delegate as? ReceiveMessageDelegate)?.receiveMessage(message: message)
         }
     }
+    
 }
 
 // MARK: - 自定义配置处理
@@ -208,13 +208,9 @@ extension YWChat: YWLauncheManagerDelegate {
         })
     }
     
-    func fetchProfile(for eServicePerson: YWPerson?) -> YWProfileItem {
-        let item: YWProfileItem = YWProfileItem()
-        item.person = eServicePerson
-        item.displayName = eServicePerson?.personId
-        item.avatar = #imageLiteral(resourceName: "meijiabang_icon")
-        return item
-    }
+    //    func fetchProfile(for eServicePerson: YWPerson?) -> YWProfileItem {
+    //
+    //    }
 }
 
 // MARK: - 自定义消息处理

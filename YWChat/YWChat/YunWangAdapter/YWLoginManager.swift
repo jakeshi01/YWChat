@@ -45,7 +45,7 @@ class YWLoginManager: NSObject {
         }
     }
     
-    private(set) var ywUid: String? {
+    var ywUid: String? {
         set {
             UserDefaults.standard.setValue(newValue, forKey: YWUidKey)
             UserDefaults.standard.synchronize()
@@ -55,7 +55,7 @@ class YWLoginManager: NSObject {
         }
     }
     
-    private(set) var ywPassword: String? {
+    var ywPassword: String? {
         set {
             UserDefaults.standard.setValue(newValue, forKey: YWPasswordKey)
             UserDefaults.standard.synchronize()
@@ -64,7 +64,7 @@ class YWLoginManager: NSObject {
             return UserDefaults.standard.string(forKey:YWPasswordKey)
         }
     }
-
+    
 }
 
 // MARK: - Interface
@@ -72,10 +72,10 @@ extension YWLoginManager {
     
     //云旺用户登录，失败自动尝试，失败3次后抛出失败。账号密码为空直接抛出错误
     func login(with imKit: YWIMKit?,
-                    userId: String,
-                    password: String,
-                    successBlock: (() -> Void)?,
-                    failedBlock: ((_ error: YWError?) -> Void)?)
+               userId: String,
+               password: String,
+               successBlock: (() -> Void)?,
+               failedBlock: ((_ error: YWError?) -> Void)?)
     {
         guard userId.count > 0, password.count > 0 else {
             failedBlock?(YWError.userAccountError)

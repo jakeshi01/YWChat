@@ -27,7 +27,7 @@ class YWContactManager: NSObject {
         if let _ = profile {
             
             completionBlock?(profile)
-       
+            
         } else {
             
             sercvice.asyncGetProfileFromServer?(for: person, with: tribe, withProgress: nil, andCompletionBlock: { (_, profile) in

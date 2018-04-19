@@ -41,10 +41,10 @@ let MessageTypeKey: String = "messageType"
 extension YWLauncheManager {
     
     func Launching(with appKey: String,
-                        debugPushCertName: String,
-                        releasePushCertName: String,
-                        successBlock: (() -> Void)?,
-                        failedBlock: ((_ error: YWError?) -> Void)?)
+                   debugPushCertName: String,
+                   releasePushCertName: String,
+                   successBlock: (() -> Void)?,
+                   failedBlock: ((_ error: YWError?) -> Void)?)
     {
         var retryCount: Int = 0
         
@@ -56,11 +56,11 @@ extension YWLauncheManager {
             
             if Initialization(with: appKey) {
                 #if DEBUG
-                    YWAPI.sharedInstance().getGlobalLogService().needCloseDiag = false
-                    YWAPI.sharedInstance().getGlobalPushService().setXPushCertName(debugPushCertName)
+                YWAPI.sharedInstance().getGlobalLogService().needCloseDiag = false
+                YWAPI.sharedInstance().getGlobalPushService().setXPushCertName(debugPushCertName)
                 #else
-                    YWAPI.sharedInstance().getGlobalLogService().needCloseDiag = true
-                    YWAPI.sharedInstance().getGlobalPushService().setXPushCertName(releasePushCertName)
+                YWAPI.sharedInstance().getGlobalLogService().needCloseDiag = true
+                YWAPI.sharedInstance().getGlobalPushService().setXPushCertName(releasePushCertName)
                 #endif
                 YWOCBridge.handleAPNSPush(imKit, description: description)
                 setAvatarStyle()
@@ -94,7 +94,7 @@ extension YWLauncheManager {
 private extension YWLauncheManager {
     
     func Initialization(with appKey: String) -> Bool {
-
+        
         let error: Int = YWOCBridge.registerAppKey(appKey)
         
         if error != 0 && error == YWSdkInitErrorCode.alreadyInited.rawValue {
@@ -122,7 +122,7 @@ private extension YWLauncheManager {
             guard let `self` = self else { return }
             self.lastConnectionStatus = status
             self.delegate?.connectionStatusChanged?(status: status, error: error)
-        }, forKey: description, of: .developer)
+            }, forKey: description, of: .developer)
     }
     
     /// 监听未读数
@@ -132,7 +132,7 @@ private extension YWLauncheManager {
         imKit.imCore.getConversationService().addConversationTotalUnreadChangedBlock({ [weak self] (unRead) in
             guard let `self` = self else { return }
             self.delegate?.conversationTotalUnreadChanged?(unRead: Int(unRead))
-        }, forKey: description, of: .developer)
+            }, forKey: description, of: .developer)
     }
     
     /// 监听链接点击事件
@@ -142,7 +142,7 @@ private extension YWLauncheManager {
         imKit.setOpenURLBlock({ [weak self] (urlString, controller) in
             guard let `self` = self else { return }
             self.delegate?.openURL?(urlString: urlString, parentController: controller)
-        }, allowedURLTypes: nil)
+            }, allowedURLTypes: nil)
     }
     
     /// 监听新消息
@@ -152,7 +152,7 @@ private extension YWLauncheManager {
         imKit.imCore.getConversationService().add(onNewMessageBlockV2: { [weak self] (messages, isOffLine) in
             guard let `self` = self else { return }
             self.delegate?.receive?(messages: messages, isOffLine: isOffLine)
-        }, forKey: description, of: .developer)
+            }, forKey: description, of: .developer)
     }
     
     /// 设置语音播放模式
@@ -171,5 +171,5 @@ private extension YWLauncheManager {
             completionBlock?(true, item)
         }
     }
-
+    
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol YWConversationManagerDelegate {
-
+    
     func setBubbleViewModel(message: IYWMessage?) -> YWBaseBubbleViewModel?
     func setMessageBubbleView(message: YWBaseBubbleViewModel?) -> YWBaseBubbleChatView?
 }
@@ -26,7 +26,7 @@ class YWConversationManager: NSObject {
     //设置单例
     public static let shared = YWConversationManager.init()
     private override init() {}
-
+    
     var delegate: YWConversationManagerDelegate?
     
 }
@@ -61,9 +61,9 @@ extension YWConversationManager {
         
         controller.didSelectItemBlock = { [weak self] conversation in
             guard let `self` = self,
-                  let conversation = conversation,
-                  let navc = controller.navigationController
-            else { return }
+                let conversation = conversation,
+                let navc = controller.navigationController
+                else { return }
             didSelectedConversationBlock?(conversation)
             self.pushConversationController(in: navc, imKit: YWLauncheManager.shared.imKit, conversation: conversation, showCustomMessage: true)
         }
@@ -83,7 +83,7 @@ extension YWConversationManager {
             }
             return false
             
-        }.first as? YWConversationViewController
+            }.first as? YWConversationViewController
         
         if let existConversationViewController = conversationViewController {
             
@@ -121,10 +121,10 @@ extension YWConversationManager {
     func pushP2PConversationController(in navgationController: UINavigationController, imKit: YWIMKit?, personId: String, showCustomMessage: Bool) -> YWConversationViewController? {
         
         guard let imKit = imKit,
-              let person = YWPerson(personId: personId),
-              let conversation = YWP2PConversation.fetch(by: person, creatIfNotExist: true, baseContext: imKit.imCore),
-              let controller = self.pushConversationController(in: navgationController, imKit: imKit, conversation: conversation, showCustomMessage: showCustomMessage)
-        else { return nil }
+            let person = YWPerson(personId: personId),
+            let conversation = YWP2PConversation.fetch(by: person, creatIfNotExist: true, baseContext: imKit.imCore),
+            let controller = self.pushConversationController(in: navgationController, imKit: imKit, conversation: conversation, showCustomMessage: showCustomMessage)
+            else { return nil }
         return controller
     }
     
@@ -135,17 +135,17 @@ extension YWConversationManager {
             completionBlock?(nil)
             return
         }
-
+        
         getTribe(with: tribeId, imKit: imKit) { [weak self] tribe in
             
             guard let `self` = self,
-                  let tribe = tribe,
-                  let controller = imKit.makeConversationViewController(with: tribe)
-            else {
-                completionBlock?(nil)
-                return
+                let tribe = tribe,
+                let controller = imKit.makeConversationViewController(with: tribe)
+                else {
+                    completionBlock?(nil)
+                    return
             }
-    
+            
             if showCustomMessage {
                 self.showCustomMessageInConversationViewController(controller)
             }
@@ -153,17 +153,17 @@ extension YWConversationManager {
         }
         
     }
-
+    
     
 }
 
 // MARK: - 消息
 extension YWConversationManager {
-
+    
     func sendMessage(with imKit: YWIMKit?, conversationId: String, content: String, progressBlock: ((CGFloat, String?) -> Void)?, errorBlock: ((Error?, String?) -> Void)?) {
         guard let imKit = YWLauncheManager.shared.imKit,
-              let conversation = imKit.imCore.getConversationService().fetchConversation(byConversationId: conversationId) else { return }
-              let body = YWMessageBodyText(messageText: content)
+            let conversation = imKit.imCore.getConversationService().fetchConversation(byConversationId: conversationId) else { return }
+        let body = YWMessageBodyText(messageText: content)
         conversation.asyncSend(body, progress: { (progress, messageId) in
             progressBlock?(progress, messageId)
         }) { (error, messageId) in
