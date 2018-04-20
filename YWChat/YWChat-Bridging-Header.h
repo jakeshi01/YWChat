@@ -18,8 +18,6 @@
 #import <WXOUIModule/IYWUIService.h>
 #import <WXOUIModule/YWConversationViewController.h>
 #import <WXOUIModule/YWConversationViewController+BubbleCustomize.h>
-#import <WXOUIModule/YWConversationViewController+BubbleCustomize.h>
 #import <WXOUIModule/YWConversationListViewController.h>
-#import <WXOUIModule/YWConversationViewController.h>
 #import <WXOUIModule/WXOTextBubbleViewModel.h>
 #import <WXOUIModule/WXOTextBubbleChatView.h>

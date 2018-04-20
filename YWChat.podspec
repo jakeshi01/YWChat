@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YWChat'
-  s.version          = '1.0.5'
+  s.version          = '1.0.6'
   s.summary          = 'pod for YWIM'
 
 # This description is used to generate tags and improve search results.
@@ -50,10 +50,10 @@ TODO: Add long description of the pod here.
   s.resources = ['wx/WXFrameworks/yw_1222.jpg', 'wx/WXFrameworks/WXOpenIMSDKResource.bundle', 'wx/WXFrameworks/WXOUIModuleResources.bundle']
   s.compiler_flags = '-ObjC'
   
-   s.vendored_frameworks = [
-    'wx/WXFrameworks/WXOUIModule.framework',
-    'wx/WXFrameworks/WXOpenIMTribeKit.framework',
-    'wx/WXFrameworks/WXOpenIMSDKFMWK.framework'
+  s.vendored_frameworks = [
+    'Pods/YunWangOpenIM/wx/WXFrameworks/WXOUIModule.framework',
+    'Pods/YunWangOpenIM/wx/WXFrameworks/WXOpenIMTribeKit.framework',
+    'Pods/YunWangOpenIM/wx/WXFrameworks/WXOpenIMSDKFMWK.framework'
   ]
 
 
