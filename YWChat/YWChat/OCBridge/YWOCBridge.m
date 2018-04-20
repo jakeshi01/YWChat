@@ -8,8 +8,6 @@
 
 
 #import "YWOCBridge.h"
-#import "YWChat-Swift.h"
-
 
 @interface YWOCBridge ()
 
